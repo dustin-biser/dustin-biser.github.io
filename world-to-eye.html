@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>World Space to Eye Space Transformation</title>
+<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</head>
+<body>
+<h1>World Space to Eye Space Transformation</h1>
+<p>
+Here we explain and derive the transformations responsible for
+transforming vectors and points from our World Coordinate System $WCS$ to
+our Eye Coordinate System $ECS$ (also know as the Camera Coordinate System).
+The $ECS$-to-$WCS$ transformation is a rather integral part of the full graphics
+transformation process, which in total is responsible for mapping vectors and points
+from object space all the way to screen space.
+
+<p>
+The conversion from $WCS$ to $ECS$ can be accomplished by applying two transformations
+in the following order:
+<ol>
+<li>Translating by the distance between the two spaces so their origins coincide.</li>
+<li>Applying a Change of Basis from one coordinate system to the other.</li>
+</ol>
+
+<p>
+Note that steps 1 and 2 are needed for transforming points from $WCS$ to $ECS$,
+but to transform vectors, all that is needed is the Change of Basis step.  This comes
+form the fact that vectors have direction and magnitude, but no position.
+
+<p>
+The translation step will involve moving all points given with respect to the
+$WCS$ a distance and direction equal to moving the $ECS$ origin so it coincides
+with the $WCS$ origin.  The location of the $ECS$ origin can be described in
+$WCS$ components to give $[\vec{E}]_{WCS} = [E_x,E_y,E_z]^T$.  Using the components
+of this vector, we can construct a translation matrix that will move our points to
+the desired location.
+
+\[ \left[ \begin{array}{ccc}
+1 & 0 & 0 & -E_x \\
+0 & 1 & 0 & -E_y \\
+0 & 0 & 1 & -E_z \\
+0 & 0 & 0 & 1
+\end{array} \right]\] 
+
+This takes care of the translation part, now we need to deal with Change of
+Basis step.  Assume that $ECS$ is composed of the basis vectors
+$\{\hat{x_e}, \hat{y_e}, \hat{z_e}\}$, which make up its unit axes.
+
+<p>
+Each basis vector of $ECS$ can be decomposed into its own combination of $WCS$ components given as follows:
+\begin{eqnarray*}
+[\hat{x_e}]_{WCS} & = [a_x, a_y, a_z]^T \\
+[\hat{y_e}]_{WCS} & = [b_x, b_y, b_z]^T \\
+[\hat{z_e}]_{WCS} & = [c_x, c_y, c_z]^T
+\end{eqnarray*}
+
+Since the unit vectors of $WCS$ and $ECS$ separately form a basis of
+$\mathbb{R}^3$, there exists a unique matrix $\underset{WCS \leftarrow ECS}{P}$
+such that given any vector $\vec{u} \in \mathbb{R}^3$
+
+\begin{equation*}
+[\vec{u}]_{WCS} = \underset{WCS \leftarrow ECS}{P} [\vec{u}]_{ECS}
+\end{equation*}
+
+The matrix $\underset{WCS \leftarrow ECS}{P}$ is called the <b>change of basis
+matrix</b> from $WCS$ to $ECS$.
+
+<br>
+<br>
+<br>
+<br>
+The columns of $\underset{WCS \leftarrow ECS}{P}$ are linearly independent because they are the coordinate
+vectors of the linearly independent set 
+
+
+
+<h3>Scratch work below</h3>
+
+
+<p>
+It is typical for the unit vectors of $WCS$ to be chosen orthogonal as to form
+a basis of $\mathbb{R}^3$.  The same holds for the unit vectors of $ECS$.  This
+implies that there is a one-to-one correspondence between the unit vectors of
+$WCS$ and the those of $ECS$.
+
+
+
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+<br/>
+And here is a vector
+$\dot{\vec{p}} = m\vec{v}$
+<br/>
+Some cool matrices
+\[ \left( \begin{array}{ccc}
+a & b & c \\
+d & e & f \\
+g & h & i \end{array} \right)\] 
+<br/>
+<br/>
+Matrix times a vector
+\[
+</body>
+</html>

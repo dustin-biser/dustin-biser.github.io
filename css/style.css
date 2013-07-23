@@ -1,0 +1,35 @@
+
+/* Global Settings */
+html * {
+    font-family: 'Lora', serif;
+}
+
+body {
+    background-color:#FFD8B1
+}
+
+h1 {
+    text-align:center;
+}
+
+h2 {
+    margin-left:2cm;
+}
+
+h3 {
+    margin-left:2cm;
+}
+
+ol {
+    margin-left:2cm;
+}
+
+ul {
+    margin-left:2cm;
+}
+
+p {
+    max-width:1200px;
+    margin-left:2cm;
+    margin-right:2cm;
+}
