@@ -5,7 +5,11 @@ html * {
 }
 
 body {
-    background-color:#FFD8B1
+    background-color:#FFD8B1;
+    width: 900px;
+    margin: 20px auto 20px auto;
+    padding: 0px;
+	border: 1px solid #333;
 }
 
 h1 {

@@ -40,73 +40,121 @@ The translation step will involve moving all points given with respect to the
 $WCS$ a distance and direction equal to moving the $ECS$ origin so it coincides
 with the $WCS$ origin.  The location of the $ECS$ origin can be described in
 $WCS$ components to give $[\vec{E}]_{WCS} = [E_x,E_y,E_z]^T$.  Using the components
-of this vector, we can construct a translation matrix that will move our points to
-the desired location.
+of this vector, we can construct a translation matrix in homogeneous form that
+will move our points to the desired location.  That matrix is the following:
 
 \[ \left[ \begin{array}{ccc}
 1 & 0 & 0 & -E_x \\
 0 & 1 & 0 & -E_y \\
 0 & 0 & 1 & -E_z \\
 0 & 0 & 0 & 1
-\end{array} \right]\] 
-
-This takes care of the translation part, now we need to deal with Change of
-Basis step.  Assume that $ECS$ is composed of the basis vectors
-$\{\hat{x_e}, \hat{y_e}, \hat{z_e}\}$, which make up its unit axes.
+\end{array} \right]\]
 
 <p>
-Each basis vector of $ECS$ can be decomposed into its own combination of $WCS$ components given as follows:
+Once the origin of $WCS$ coincides with the origin of $ECS$, all that is left
+is to apply a series of rotations so that their unit axes line up in a desired
+way.  An efficient way of applying such rotations without the need for
+evaluating expensive trigonometric functions is to construct a <b>Change of
+Basis Transformation Matrix</b>.  Such a matrix allows one to transform vectors
+given in one basis, to the components given in another basis (the same holds
+for points, so long as the origin of each space coincides, which was
+the reason for first applying a translation).
+
+<p>
+Assume that $ECS$ is composed of the basis vectors
+$\{\hat{x_e}, \hat{y_e}, \hat{z_e}\}$,
+which make up its unit axes.  It is typical in graphics to describe the unit
+vectors of $ECS$ using world coordinates.  This is analogous to describing the
+orientation of our viewing-camera with respect to the orientation of world
+space.
+
+Each basis vector of $ECS$ can be decomposed into its own combination of $WCS$
+components given as follows:
+
 \begin{eqnarray*}
 [\hat{x_e}]_{WCS} & = [a_x, a_y, a_z]^T \\
 [\hat{y_e}]_{WCS} & = [b_x, b_y, b_z]^T \\
 [\hat{z_e}]_{WCS} & = [c_x, c_y, c_z]^T
 \end{eqnarray*}
 
+<p>
 Since the unit vectors of $WCS$ and $ECS$ separately form a basis of
 $\mathbb{R}^3$, there exists a unique matrix $\underset{WCS \leftarrow ECS}{P}$
-such that given any vector $\vec{u} \in \mathbb{R}^3$
+such that given any vector $\vec{u} \in \mathbb{R}^3$,
 
 \begin{equation*}
 [\vec{u}]_{WCS} = \underset{WCS \leftarrow ECS}{P} [\vec{u}]_{ECS}
 \end{equation*}
 
-The matrix $\underset{WCS \leftarrow ECS}{P}$ is called the <b>change of basis
-matrix</b> from $WCS$ to $ECS$.
+<p>
+Here, the matrix $P$ is called the <b>Change of Basis Transformation Matrix</b>
+from $ECS$ to $WCS$, because it allows one to convert the components of
+$\vec{u}$ from eye-coordinates to world-coordinates.  The columns of $P$ are
+the unit vectors of $ECS$ given in world space coordinates.
 
-<br>
-<br>
-<br>
-<br>
-The columns of $\underset{WCS \leftarrow ECS}{P}$ are linearly independent because they are the coordinate
-vectors of the linearly independent set 
+\begin{equation*}
+\underset{WCS \leftarrow ECS}{P} =
+\left[ \begin{array}{ccc}
+[\hat{x_e}]_{WCS} & [\hat{y_e}]_{WCS} & [\hat{z_e}]_{WCS}
+\end{array} \right]
+\end{equation*}
 
-
-
-<h3>Scratch work below</h3>
-
+This stems from the fact that our change of basis matrix $P$ represents a
+linear transformation.  Such a matrix can be constructed by settings its
+columns to the transformed basis vectors of the domain space.
 
 <p>
-It is typical for the unit vectors of $WCS$ to be chosen orthogonal as to form
-a basis of $\mathbb{R}^3$.  The same holds for the unit vectors of $ECS$.  This
-implies that there is a one-to-one correspondence between the unit vectors of
-$WCS$ and the those of $ECS$.
+Unfortunately, our goal is to convert vector components the other way around,
+that is from $WCS$ to $ECS$.  This is not too big of a problem though, as
+we shall soon see.
 
+<hr>
+<hr>
 
+<h3>Things left to show...</h3>
+<ul>
+<li>
+    Show that $P$ is an orthogonal matrix such that $P^{-1}$ exists, and $P^{-1} =
+    P^T$.
+</li>
 
-When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
-<br/>
-And here is a vector
-$\dot{\vec{p}} = m\vec{v}$
-<br/>
-Some cool matrices
-\[ \left( \begin{array}{ccc}
-a & b & c \\
-d & e & f \\
-g & h & i \end{array} \right)\] 
-<br/>
-<br/>
-Matrix times a vector
-\[
+<li>
+    Use the above result to show how to transform vectors from $WCS$ to $ECS$.
+</li>
+
+<li>
+    Convert of the change of basis matrix $P$ into homogeneous form.
+</li>
+
+<li>
+    Give the final matrix result that combines translation and change of basis
+    transformations for taking both points and vectors from $WCS$ to $ECS$:
+    \begin{equation*}
+    \underset{ECS \leftarrow WCS}{M} =
+
+    \left[ \begin{array}{ccc}
+    a_x & a_y & a_z & 0 \\
+    b_x & b_y & b_z & 0 \\
+    c_x & c_y & c_z & 0 \\
+    0 & 0 & 0 & 1
+    \end{array} \right]
+
+    \cdot
+
+    \left[ \begin{array}{ccc}
+    1 & 0 & 0 & -E_x \\
+    0 & 1 & 0 & -E_y \\
+    0 & 0 & 1 & -E_z \\
+    0 & 0 & 0 & 1
+    \end{array} \right]
+    \end{equation*}
+</li>
+</ul>
+
+<p>
+the columns of our change of basis matrix $P$ are linearly independent because
+they are the coordinate vectors of a linearly independent set, namely the
+orthogonal unit vectors of our world space...
+
 </body>
 </html>
