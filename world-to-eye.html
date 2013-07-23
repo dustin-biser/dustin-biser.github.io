@@ -4,9 +4,17 @@
 <title>World Space to Eye Space Transformation</title>
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+
+<!-- Set math mode encodings>-->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
+
+<!-- Enable equation autonumbering>-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });
+</script>
+
 <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -39,16 +47,18 @@ form the fact that vectors have direction and magnitude, but no position.
 The translation step will involve moving all points given with respect to the
 $WCS$ a distance and direction equal to moving the $ECS$ origin so it coincides
 with the $WCS$ origin.  The location of the $ECS$ origin can be described in
-$WCS$ components to give $[\vec{E}]_{WCS} = [E_x,E_y,E_z]^T$.  Using the components
+$WCS$ components to give $[\boldsymbol{\vec{E}}]_{WCS} = [E_x,E_y,E_z]^T$.  Using the components
 of this vector, we can construct a translation matrix in homogeneous form that
 will move our points to the desired location.  That matrix is the following:
 
-\[ \left[ \begin{array}{ccc}
+\begin{equation}
+\left[ \begin{array}{ccc}
 1 & 0 & 0 & -E_x \\
 0 & 1 & 0 & -E_y \\
 0 & 0 & 1 & -E_z \\
 0 & 0 & 0 & 1
-\end{array} \right]\]
+\end{array} \right]
+\end{equation}
 
 <p>
 Once the origin of $WCS$ coincides with the origin of $ECS$, all that is left
@@ -62,42 +72,42 @@ the reason for first applying a translation).
 
 <p>
 Assume that $ECS$ is composed of the basis vectors
-$\{\hat{x_e}, \hat{y_e}, \hat{z_e}\}$,
+$\{ \boldsymbol{\hat{x_e}}, \boldsymbol{\hat{y_e}}, \boldsymbol{\hat{z_e}} \}$,
 which make up its unit axes.  It is typical in graphics to describe the unit
-vectors of $ECS$ using world coordinates.  This is analogous to describing the
+vectors of eye-space using world-space components.  This is analogous to describing the
 orientation of our viewing-camera with respect to the orientation of world
 space.
 
 Each basis vector of $ECS$ can be decomposed into its own combination of $WCS$
 components given as follows:
 
-\begin{eqnarray*}
-[\hat{x_e}]_{WCS} & = [a_x, a_y, a_z]^T \\
-[\hat{y_e}]_{WCS} & = [b_x, b_y, b_z]^T \\
-[\hat{z_e}]_{WCS} & = [c_x, c_y, c_z]^T
-\end{eqnarray*}
+\begin{equation}
+[\boldsymbol{\hat{x_e}}]_{WCS} = [a_x, a_y, a_z]^T, \;
+[\boldsymbol{\hat{y_e}}]_{WCS} = [b_x, b_y, b_z]^T, \;
+[\boldsymbol{\hat{z_e}}]_{WCS} = [c_x, c_y, c_z]^T
+\end{equation}
 
 <p>
 Since the unit vectors of $WCS$ and $ECS$ separately form a basis of
 $\mathbb{R}^3$, there exists a unique matrix $\underset{WCS \leftarrow ECS}{P}$
-such that given any vector $\vec{u} \in \mathbb{R}^3$,
+such that given any vector $\boldsymbol{\vec{u}} \in \mathbb{R}^3$,
 
-\begin{equation*}
-[\vec{u}]_{WCS} = \underset{WCS \leftarrow ECS}{P} [\vec{u}]_{ECS}
-\end{equation*}
+\begin{equation}
+[\boldsymbol{\vec{u}}]_{WCS} = \underset{WCS \leftarrow ECS}{P} [\boldsymbol{\vec{u}}]_{ECS}
+\end{equation}
 
 <p>
 Here, the matrix $P$ is called the <b>Change of Basis Transformation Matrix</b>
 from $ECS$ to $WCS$, because it allows one to convert the components of
-$\vec{u}$ from eye-coordinates to world-coordinates.  The columns of $P$ are
+$\boldsymbol{\vec{u}}$ from eye-coordinates to world-coordinates.  The columns of $P$ are
 the unit vectors of $ECS$ given in world space coordinates.
 
-\begin{equation*}
+\begin{equation}
 \underset{WCS \leftarrow ECS}{P} =
 \left[ \begin{array}{ccc}
-[\hat{x_e}]_{WCS} & [\hat{y_e}]_{WCS} & [\hat{z_e}]_{WCS}
+[\boldsymbol{\hat{x_e}}]_{WCS} & [\boldsymbol{\hat{y_e}}]_{WCS} & [\boldsymbol{\hat{z_e}}]_{WCS}
 \end{array} \right]
-\end{equation*}
+\end{equation}
 
 This stems from the fact that our change of basis matrix $P$ represents a
 linear transformation.  Such a matrix can be constructed by settings its
@@ -106,16 +116,83 @@ columns to the transformed basis vectors of the domain space.
 <p>
 Unfortunately, our goal is to convert vector components the other way around,
 that is from $WCS$ to $ECS$.  This is not too big of a problem though, as
-we shall soon see.
+we soon shall see.
+
+<p>
+Notice first what happends if $P^{-1}$ exists.  We can mutiptily on the left of
+equation $(3)$ by the inverse $P^{-1}$ in order to get
+
+\begin{equation}
+\underset{WCS \leftarrow ECS}{P^{-1}} [\boldsymbol{\vec{u}}]_{WCS} =  [\boldsymbol{\vec{u}}]_{ECS}
+\end{equation}
+
+<p>
+which gives us our sought after transformation that coverts vectors with
+world-space components to those with eye-space components.
+
+<p>
+Lets take a moment now and show that not only $P^{-1}$ exists but that $P$ is
+an orthogonal matrix such that $P^{-1} = P^T$.  For simplicity of notation,
+we can define new unit vectors that represent the unit vectors of eye-space
+given in world-space coorinates:
+
+$\boldsymbol{x} = [\boldsymbol{\hat{x_e}}]_{WCS}^T, \;\;
+\boldsymbol{y} = [\boldsymbol{\hat{y_e}}]_{WCS}^T, \;\;
+\boldsymbol{z} = [\boldsymbol{\hat{z_e}}]_{WCS}^T$.
+Then,
+\begin{eqnarray*}
+    P^T P   & = &
+    \begin{bmatrix}
+        \boldsymbol{\hat{x}}^T \\
+        \boldsymbol{\hat{y}}^T \\
+        \boldsymbol{\hat{z}}^T
+    \end{bmatrix}
+
+    \begin{bmatrix}
+        \boldsymbol{\hat{x}}  & \boldsymbol{\hat{y}} & \boldsymbol{\hat{z}}
+    \end{bmatrix}  \\ \\
+            & = &
+    \begin{bmatrix}
+        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{x}}^T &
+        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{y}}^T &
+        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{z}}^T & \\
+
+        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{x}}^T &
+        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{y}}^T &
+        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{z}}^T & \\
+
+        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{x}}^T &
+        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{y}}^T &
+        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{z}}^T & \\
+    \end{bmatrix} \\ \\
+            & = &
+    I
+\end{eqnarray*}
+
+
+Since $WCS$ and $ECS$ both stem from orthongal bases, the change of
+basis from one to the other must preserve length and angles;
+specifically, if two vectors are orthogonal with respect to one basis,
+they must be orthgonal with respect to the second basis, if both bases
+are represented by a set of orthgonal vectors.  This allows us to
+conclude that the diagonal entires of $P^T P$ must all be one, and the
+off diagonal entries zero.
 
 <hr>
 <hr>
 
-<h3>Things left to show...</h3>
+<h3 id="left-to-show">Things left to show...</h3>
 <ul>
 <li>
     Show that $P$ is an orthogonal matrix such that $P^{-1}$ exists, and $P^{-1} =
     P^T$.
+    <ul>
+    <li>
+        $P$ has orthononormal columns if and only if  $P^T P = I$.
+    </li>
+    <li>
+    </li>
+    </ul>
 </li>
 
 <li>
