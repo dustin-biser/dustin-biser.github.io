@@ -131,15 +131,18 @@ which gives us our sought after transformation that coverts vectors with
 world-space components to those with eye-space components.
 
 <p>
-Lets take a moment now and show that not only $P^{-1}$ exists but that $P$ is
-an orthogonal matrix such that $P^{-1} = P^T$.  For simplicity of notation,
-we can define new unit vectors that represent the unit vectors of eye-space
-given in world-space coorinates:
+Let us take a moment now and show that $P^{-1}$ actually exists.  To do this we
+can show that $P$ is actually an orthongal matrix, whose columns are
+orthonormal, and thus linearly independent.  Using results from Linaer Algebra,
+if $P^T P = I$ holds, then $P$ is an orthongal matrix, and $P^{-1}$ exists.
+For simplicity of notation, we can define new unit vectors that represent the basis
+vectors of eye-space given in world-space coorinates:
 
 $\boldsymbol{x} = [\boldsymbol{\hat{x_e}}]_{WCS}^T, \;\;
 \boldsymbol{y} = [\boldsymbol{\hat{y_e}}]_{WCS}^T, \;\;
 \boldsymbol{z} = [\boldsymbol{\hat{z_e}}]_{WCS}^T$.
-Then,
+
+Now we can attempt to compute $P^T P$ as follows:
 \begin{eqnarray*}
     P^T P   & = &
     \begin{bmatrix}
@@ -153,48 +156,51 @@ Then,
     \end{bmatrix}  \\ \\
             & = &
     \begin{bmatrix}
-        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{x}}^T &
-        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{y}}^T &
-        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{z}}^T & \\
+        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{x}} &
+        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{y}} &
+        \boldsymbol{\hat{x}}^T \boldsymbol{\hat{z}} & \\
 
-        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{x}}^T &
-        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{y}}^T &
-        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{z}}^T & \\
+        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{x}} &
+        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{y}} &
+        \boldsymbol{\hat{y}}^T \boldsymbol{\hat{z}} & \\
 
-        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{x}}^T &
-        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{y}}^T &
-        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{z}}^T & \\
-    \end{bmatrix} \\ \\
-            & = &
-    I
+        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{x}} &
+        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{y}} &
+        \boldsymbol{\hat{z}}^T \boldsymbol{\hat{z}} & \\
+    \end{bmatrix} \\
 \end{eqnarray*}
 
 
-Since $WCS$ and $ECS$ both stem from orthongal bases, the change of
-basis from one to the other must preserve length and angles;
-specifically, if two vectors are orthogonal with respect to one basis,
-they must be orthgonal with respect to the second basis, if both bases
-are represented by a set of orthgonal vectors.  This allows us to
-conclude that the diagonal entires of $P^T P$ must all be one, and the
-off diagonal entries zero.
+Since $WCS$ and $ECS$ both stem from orthonormal bases, the change of basis
+from one to the other preserves length and angles.  This comes from the fact
+that if two vectors are orthogonal with respect to one coordinate space, they
+must be orthgonal with respect to the second space, in addition to the fact
+that the length of a vector is the same in both coordinate spaces.  The basis
+vectors $\boldsymbol{\hat{x_e}}, \boldsymbol{\hat{y_e}},
+\boldsymbol{\hat{z_e}}$ of eye-space are orthonormal, thus after being
+converted to their world-space counterparts $\boldsymbol{\hat{x}},
+\boldsymbol{\hat{y}}, \boldsymbol{\hat{z}}$, their orthonormality
+remains.  This allows us to conclude that the diagonal entires of $P^T
+P$ must all be one, and the off diagonal entries zero.  This allows us
+to conclude that
+
+\begin{equation}
+P^T P = I
+\end{equation}
+
+resulting in $P$ being an orthogonal matrix.  The inverse of $P$ can then be
+written as follows:
+
+\begin{equation}
+    \underset{ECS \leftarrow WCS}{P} 
+\end{equation}
+
 
 <hr>
 <hr>
 
 <h3 id="left-to-show">Things left to show...</h3>
 <ul>
-<li>
-    Show that $P$ is an orthogonal matrix such that $P^{-1}$ exists, and $P^{-1} =
-    P^T$.
-    <ul>
-    <li>
-        $P$ has orthononormal columns if and only if  $P^T P = I$.
-    </li>
-    <li>
-    </li>
-    </ul>
-</li>
-
 <li>
     Use the above result to show how to transform vectors from $WCS$ to $ECS$.
 </li>
