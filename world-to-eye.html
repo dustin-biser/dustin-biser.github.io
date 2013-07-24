@@ -44,11 +44,11 @@ but to transform vectors, all that is needed is the Change of Basis step.  This 
 form the fact that vectors have direction and magnitude, but no position.
 
 <p>
-The translation step will involve moving all points given with respect to the
-$WCS$ a distance and direction equal to moving the $ECS$ origin so it coincides
-with the $WCS$ origin.  The location of the $ECS$ origin can be described in
-$WCS$ components to give $[\boldsymbol{\vec{E}}]_{WCS} = [E_x,E_y,E_z]^T$.  Using the components
-of this vector, we can construct a translation matrix in homogeneous form that
+The translation step will involve moving all points a distance and direction
+equal to moving the $ECS$ origin so it coincides with the $WCS$ origin.  The
+location of the eye-space origin can be described in world-space components to
+give $[\boldsymbol{\vec{E}}]_{WCS} = [E_x,E_y,E_z]^T$.  Using the components of
+this vector, we can construct a translation matrix in homogeneous form that
 will move our points to the desired location.  That matrix is the following:
 
 \begin{equation}
@@ -90,7 +90,7 @@ components given as follows:
 <p>
 Since the unit vectors of $WCS$ and $ECS$ separately form a basis of
 $\mathbb{R}^3$, there exists a unique matrix $\underset{WCS \leftarrow ECS}{P}$
-such that given any vector $\boldsymbol{\vec{u}} \in \mathbb{R}^3$,
+such that given any vector $\boldsymbol{\vec{u}} \in \mathbb{R}^3$, 
 
 \begin{equation}
 [\boldsymbol{\vec{u}}]_{WCS} = \underset{WCS \leftarrow ECS}{P} [\boldsymbol{\vec{u}}]_{ECS}
@@ -111,7 +111,7 @@ the unit vectors of $ECS$ given in world space coordinates.
 
 This stems from the fact that our change of basis matrix $P$ represents a
 linear transformation, and a matrix that corresponds to a linear transformation
-can be constructed by by settings its columns equal to the transformed basis
+can be constructed by settings its columns equal to the transformed basis
 vectors of the domain coordinate space.
 
 <p>
