@@ -110,8 +110,9 @@ the unit vectors of $ECS$ given in world space coordinates.
 \end{equation}
 
 This stems from the fact that our change of basis matrix $P$ represents a
-linear transformation.  Such a matrix can be constructed by settings its
-columns to the transformed basis vectors of the domain space.
+linear transformation, and a matrix that corresponds to a linear transformation
+can be constructed by by settings its columns equal to the transformed basis
+vectors of the domain coordinate space.
 
 <p>
 Unfortunately, our goal is to convert vector components the other way around,
@@ -119,30 +120,31 @@ that is from $WCS$ to $ECS$.  This is not too big of a problem though, as
 we soon shall see.
 
 <p>
-Notice first what happends if $P^{-1}$ exists.  We can mutiptily on the left of
-equation $(3)$ by the inverse $P^{-1}$ in order to get
+Notice first what happens if $P^{-1}$ exists.  We can multiply on the left of
+$(3)$ by the inverse $P^{-1}$ in order to arrive at
 
 \begin{equation}
 \underset{WCS \leftarrow ECS}{P^{-1}} [\boldsymbol{\vec{u}}]_{WCS} =  [\boldsymbol{\vec{u}}]_{ECS}
 \end{equation}
 
 <p>
-which gives us our sought after transformation that coverts vectors with
-world-space components to those with eye-space components.
+which says that the inverse $P^{-1}$ of our change of basis matrix takes vectors
+with components given in world-coordinates and converts them to
+eye-coordinates.  This is precisely the coordinate transformation we desire.
 
 <p>
-Let us take a moment now and show that $P^{-1}$ actually exists.  To do this we
-can show that $P$ is actually an orthongal matrix, whose columns are
-orthonormal, and thus linearly independent.  Using results from Linaer Algebra,
-if $P^T P = I$ holds, then $P$ is an orthongal matrix, and $P^{-1}$ exists.
-For simplicity of notation, we can define new unit vectors that represent the basis
-vectors of eye-space given in world-space coorinates:
+Let us take a moment now to show that $P^{-1}$ actually exists.  We do this by 
+showing that $P$ is an orthogonal matrix, whose columns are orthonormal, and thus
+linearly independent.  To prove that $P$ is an orthogonal matrix, all that is
+required is for $P^T P = I$ to hold.
 
-$\boldsymbol{x} = [\boldsymbol{\hat{x_e}}]_{WCS}^T, \;\;
-\boldsymbol{y} = [\boldsymbol{\hat{y_e}}]_{WCS}^T, \;\;
-\boldsymbol{z} = [\boldsymbol{\hat{z_e}}]_{WCS}^T$.
+For simplicity of notation, we define the following unit vectors 
+$\boldsymbol{\hat{x}} = [\boldsymbol{\hat{x_e}}]_{WCS}^T, \;\;
+\boldsymbol{\hat{y}} = [\boldsymbol{\hat{y_e}}]_{WCS}^T, \;\;
+\boldsymbol{\hat{z}} = [\boldsymbol{\hat{z_e}}]_{WCS}^T$
+that represent the world-space components of our eye-space basis vectors.
+Using these vectors we can compute $P^T P$ as follows:
 
-Now we can attempt to compute $P^T P$ as follows:
 \begin{eqnarray*}
     P^T P   & = &
     \begin{bmatrix}
@@ -181,63 +183,64 @@ vectors $\boldsymbol{\hat{x_e}}, \boldsymbol{\hat{y_e}},
 converted to their world-space counterparts $\boldsymbol{\hat{x}},
 \boldsymbol{\hat{y}}, \boldsymbol{\hat{z}}$, their orthonormality
 remains.  This allows us to conclude that the diagonal entires of $P^T
-P$ must all be one, and the off diagonal entries zero.  This allows us
-to conclude that
+P$ must all be one, and the off diagonal entries zero, meaning
 
 \begin{equation}
 P^T P = I
 \end{equation}
 
-resulting in $P$ being an orthogonal matrix.  The inverse of $P$ can then be
-written as follows:
+Therefore, $P$ is an orthogonal matrix, and $P^{-1}$ exists.
+This means that $(5)$ is valid and $P^{-1}$ is the change of basis matrix that transforms world-space
+components to eye-space components.  Combining this with the property $P^{-1} = P^T$ we have
 
 \begin{equation}
+    \underset{WCS \leftarrow ECS}{P^T} = 
     \underset{ECS \leftarrow WCS}{P} 
 \end{equation}
 
 
-<hr>
-<hr>
+Taking the transpose of $(4)$ gives us an explicit form for $P^T$
 
-<h3 id="left-to-show">Things left to show...</h3>
-<ul>
-<li>
-    Use the above result to show how to transform vectors from $WCS$ to $ECS$.
-</li>
+\begin{eqnarray}
+\underset{ECS \leftarrow WCS}{P} & = & 
 
-<li>
-    Convert of the change of basis matrix $P$ into homogeneous form.
-</li>
+\begin{bmatrix}
+[\boldsymbol{\hat{x_e}}]^T_{WCS} \\
+[\boldsymbol{\hat{y_e}}]^T_{WCS} \\
+[\boldsymbol{\hat{z_e}}]^T_{WCS} \\
+\end{bmatrix} & = &
 
-<li>
-    Give the final matrix result that combines translation and change of basis
-    transformations for taking both points and vectors from $WCS$ to $ECS$:
-    \begin{equation*}
-    \underset{ECS \leftarrow WCS}{M} =
-
-    \left[ \begin{array}{ccc}
-    a_x & a_y & a_z & 0 \\
-    b_x & b_y & b_z & 0 \\
-    c_x & c_y & c_z & 0 \\
-    0 & 0 & 0 & 1
-    \end{array} \right]
-
-    \cdot
-
-    \left[ \begin{array}{ccc}
-    1 & 0 & 0 & -E_x \\
-    0 & 1 & 0 & -E_y \\
-    0 & 0 & 1 & -E_z \\
-    0 & 0 & 0 & 1
-    \end{array} \right]
-    \end{equation*}
-</li>
-</ul>
+\begin{bmatrix}
+    a_x & a_y & a_z  \\
+    b_x & b_y & b_z  \\
+    c_x & c_y & c_z  \\
+\end{bmatrix} \\
+\end{eqnarray}
 
 <p>
-the columns of our change of basis matrix $P$ are linearly independent because
-they are the coordinate vectors of a linearly independent set, namely the
-orthogonal unit vectors of our world space...
+We are almost finished.  All that is left in order to construct the full $WCS$ to $ECS$ transformation matrix is to
+convert $(8)$ to homogeneous form, then multiply it on the right by our translation matrix from $(1)$.
+The final result is given below:
 
-</body>
-</html>
+\begin{equation}
+\underset{ECS \leftarrow WCS}{M} =
+
+\left[ \begin{array}{ccc}
+a_x & a_y & a_z & 0 \\
+b_x & b_y & b_z & 0 \\
+c_x & c_y & c_z & 0 \\
+0 & 0 & 0 & 1
+\end{array} \right]
+
+\cdot
+
+\left[ \begin{array}{ccc}
+1 & 0 & 0 & -E_x \\
+0 & 1 & 0 & -E_y \\
+0 & 0 & 1 & -E_z \\
+0 & 0 & 0 & 1
+\end{array} \right]
+\end{equation}
+
+Multiplying points or vectors on the left by the matrix $M$ will transform their components from
+world-space to eye-space.
