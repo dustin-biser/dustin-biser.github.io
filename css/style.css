@@ -9,7 +9,7 @@ body {
     width: 900px;
     margin: 20px auto 20px auto;
     padding: 0px;
-	border: 1px solid #333;
+	border: 0px solid #444;
 }
 
 h1 {
@@ -17,10 +17,6 @@ h1 {
 }
 
 h2 {
-    margin-left:2cm;
-}
-
-h3 {
     margin-left:2cm;
 }
 
@@ -36,4 +32,22 @@ p {
     max-width:1200px;
     margin-left:2cm;
     margin-right:2cm;
+}
+
+#cover_photo {
+    float:left;
+    margin-right:100px;
+}
+
+div.wrapper {
+    padding:20px;
+}
+
+
+hr {
+    padding:20px;
+}
+
+#content {
+    clear:both;
 }
