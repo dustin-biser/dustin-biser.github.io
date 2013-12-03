@@ -596,7 +596,7 @@ a small {
 }
 
 ul {
-  list-style-image: url("../images/bullet.png");
+  /*list-style-image: url("../images/bullet.png");*/
 }
 
 strong {
@@ -680,13 +680,15 @@ td {
   border-bottom: 1px solid #434343;
 }
 
-hr {
-  border: 0;
-  outline: none;
-  height: 3px;
-  background: transparent url("../images/hr.gif") center center repeat-x;
-  margin: 0 0 20px;
-}
+/*hr {*/
+  /*border: 0;*/
+  /*outline: none;*/
+  /*height: 3px;*/
+  /*background: transparent url("../images/hr.gif") center center repeat-x;*/
+  /*margin-top: 10;*/
+  /*margin-bottom: 0;*/
+  /*padding: 0;*/
+/*}*/
 
 dt {
   color: #F0E7D5;

@@ -5,7 +5,6 @@ html * {
 }
 
 body {
-    background-color:#FFD8B1;
     width: 900px;
     margin: 20px auto 20px auto;
     padding: 0px;
@@ -13,11 +12,8 @@ body {
 }
 
 h1 {
-    text-align:center;
-}
-
-h2 {
-    margin-left:2cm;
+    font-size: 2.5em;
+    text-align:left;
 }
 
 ol {
@@ -26,12 +22,6 @@ ol {
 
 ul {
     margin-left:2cm;
-}
-
-p {
-    max-width:1200px;
-    margin-left:2cm;
-    margin-right:2cm;
 }
 
 #cover_photo {
@@ -43,11 +33,62 @@ div.wrapper {
     padding:20px;
 }
 
-
-hr {
-    padding:20px;
-}
-
 #content {
     clear:both;
 }
+
+#email {
+    padding:0px;
+    margin:0px;
+}
+
+a.top:link, a.top:visited {
+    display:block;
+    width:auto;
+    font-weight:bold;
+    color: #b6b6b6;
+    background:transparent;
+    text-align:center;
+    padding:4px;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+
+a.top:hover, a.top:active {
+    background-color:#444444;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul {
+    width: 100%;
+}
+li {
+    float: left;
+    width: 25%;
+    text-align:center;
+}
+
+hr {
+  border: 0px;
+  outline: none;
+  height: 3px;
+  background: transparent url("../images/hr.gif") center center repeat-x;
+  padding: 0px;
+}
+
+hr.top {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+hr.bottom {
+  /*margin-top: 0px;*/
+  /*margin-bottom: 10px;*/
+  margin: 0px;
+}
+
+
