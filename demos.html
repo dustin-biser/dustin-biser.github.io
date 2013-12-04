@@ -39,36 +39,75 @@
   <section>
   <h1>Graphics Demos</h1>
   <h3>C++, OpenGL, and GLSL</h3>
-  <hr class="top">
 
+
+
+
+  <hr class="top">
   <p>
   <h3>Shadowing Mapping</h3>
-  <iframe width="480" height="360" src="//www.youtube-nocookie.com/embed/XF30cLr_-V8" frameborder="0" allowfullscreen></iframe>
   </p>
   <p>
   Implementation of the Shaddow Mapping algorithm.
+  </p>
+  <iframe width="480" height="360" src="//www.youtube-nocookie.com/embed/XF30cLr_-V8" frameborder="0" allowfullscreen></iframe>
+  <p>
   </br>
   Depth Buffer offsets were used to prevent shadow surface acene.
   </br>
-  Percentage Closer filtering was applied to shadow map in order to anti-alias shadow edges.
+  Percentage Closer filtering was applied to the shadow map in order to anti-alias shadow edges.
   </p>
   <p>
-  <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/ShadowMap.cpp">ShadowMap.cpp</a>
-  </br>
   <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/ShadowMap.hpp">ShadowMap.hpp</a>
+  |
+  <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/ShadowMap.cpp">ShadowMap.cpp</a>
   </p>
+
+
+
+
+  <hr class="top">
+  <p>
+  <h3>Quaternion Based Camera</h3>
+  </p>
+  <p>
+  Demo of a quaterion backed camera implementation.
+  </p>
+  <iframe width="480" height="360" src="//www.youtube-nocookie.com/embed/er7YPKvQQAM" frameborder="0" allowfullscreen></iframe>
+  <p>
+  The pose of the camera is computed and stored within a quaternion.
+  </p>
+  <p>
+  View matrix calculations are computed via lazy evaluation to increase performance.
+  </p>
+  <p>
+  After a set number of rotations, the camera automatically renormalizes it's
+  local coordinate system to prevent numerical error accumlation. 
+  </p>
+  <p>
+   <a target="_blank" href=" https://github.com/dustin-biser/Rigid3D/blob/master/include/utils/GlUtils/Camera.hpp">Camera.hpp</a>
+   |
+   <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/src/utils/GlUtils/Camera.cpp">Camera.cpp</a>
+  </p>
+  <p>
+   <a target="_blank" href=" https://github.com/dustin-biser/Rigid3D/blob/master/include/utils/GlUtils/CameraController.hpp">CameraController.hpp</a>
+   |
+   <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/src/utils/GlUtils/CameraController.cpp">CameraController.cpp</a>
+  </p>
+
+
 
   <hr class="top">
   <p>
   <h3>Flat versus Smooth Shading</h3>
-  <iframe width="480" height="360" src="//www.youtube-nocookie.com/embed/t6gYn4cV1vw" frameborder="0" allowfullscreen></iframe>
   </p>
   <p>
   Demo showing the difference between smooth and flat shading effects.
   </p>
+  <iframe width="480" height="360" src="//www.youtube-nocookie.com/embed/t6gYn4cV1vw" frameborder="0" allowfullscreen></iframe>
   <p>
   <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/FlatSmoothShading_Example.cpp">FlatSmoothShading.cpp</a>
-  </br>
+  |
   <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/FlatSmoothShading_Example.hpp">FlatSmoothShading.hpp</a>
   </p>
 
