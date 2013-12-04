@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>dustin-biser.github.io by dustin-biser</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+    <div class="wrapper">
+
+        <div id="title">
+          <!--<img id="cover_photo" src="images/me.jpeg"/>-->
+          <h1>Dustin Biser</h1>
+          <h3>Real-Time Computer Graphics and Physical Simulation</h3>
+
+          <div id="contact_info">
+          <img id="email" src="images/email.png"/></br>
+          Github: <a target="_blank" href="https://github.com/dustin-biser">github.com/dustin-biser</a>
+          </div>
+
+        </div>
+
+        <div id="content">
+          <hr class="top">
+          <ul>
+          <li><a class="top" href="demos.html">Graphics Demos</a></li>
+          <li><a class="top" href="projects.html">Projects</a></li>
+          <li><a target="_blank" class="top" href="resume.pdf">Resume</a></li>
+          <li><a class="top" href="index.html">About Me</a></li>
+          </ul>
+        </div>
+      <section>
+
+      <h1> Projects </h1>
+
+      <hr class="top">
+      </br>
+      <h3> 3D Graphics Engine </h3>
+      </br>
+      <img src="images/texturedBox_small.png"/>
+      <img src="images/dino.png"/>
+      <img src="images/normals.png"/>
+      <img src="images/shadow.png"/>
+      <img src="images/depthmap.png"/>
+      <img src="images/multipleobjects.png"/>
+      <p>
+      A graphics renderer I wrote from scratch using C++, OpenGL, and GLSL that
+      is capable of mesh loading, vertex data consolidation, texturing,
+      per-fragment lighting, shadow mapping, and more.  I have also built a
+      quaternion-based camera for the engine that supports mouse inputs
+      for easy navigation of 3D scenes. 
+      </br>
+      Check out my
+      <a target="_blank" href="https://github.com/dustin-biser/Rigid3D">Github Repository</a>
+      </p>
+
+      <hr class="top">
+      </br>
+      <h3> Physics Engine </h3>
+      </br>
+      <img src="images/physics.png"/>
+      <p>
+      My senior project at the University of Maryland in <i>Spring 2012.</i>
+      </br>
+      My advisor for this project was
+      <a target="_blank" href="http://www.cs.umd.edu/~mount/">Prof. David Mount</a>.
+      </p>
+      <p>
+      The physics engine uses impulse-based dynamics for collision
+      response (an idea pioneered by Brian Miritch) due to the fact that different
+      types of contact (colliding, rolling, sliding, and resting) can all be
+      handled similarly within the same framework.
+      </p>
+      <p>
+      Rigid bodies are dynamically simulated using an iterative time stepping
+      scheme (Runge-Kutta Method) in order to solve the equations of motion.
+      </p>
+      <p>
+      Collision detection is handled using axis aligned
+      bounding boxes for broad phase detection, in combination with separating axis
+      tests for narrow phase detection.  If collision is found between two bodies,
+      relative velocities are computed at the points of contact, and impulses are
+      applied at these points to prevent penetration.
+      </p>
+      <p> 
+      In order for users to
+      interact with bodies during a simulation, dampened spring forces are 
+      computed on the fly in response to mouse inputs.
+      </p>
+      <p>
+      Check out the project's
+      <a target="_blank" href="https://github.com/Rigid2D/Rigid2D">Github Repository</a>
+      </p>
+      <p>
+      <u>References:</u></br>
+      Brian Miritch's
+      <a target="_blank" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.16.6207&rep=rep1&type=pdf">paper</a>
+      on impulse-based dynamics.
+      </br>
+      David Baraff's
+      <a target="_blank" href="http://www.pixar.com/companyinfo/research/pbm2001/index.html">siggraph notes</a>
+      on rigid body simulation for computer graphics.
+      </br>
+      Christer Ericson's
+      <a target="_blank" href="http://realtimecollisiondetection.net/books/rtcd/">book</a>
+      on real-time collision detection.
+      </p>
+
+
+    </div> <!-- end class="wrapper"-->
+    </secction>
+
+  </body>
+</html>

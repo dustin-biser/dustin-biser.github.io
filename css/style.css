@@ -83,14 +83,14 @@ hr {
   padding: 0px;
 }
 
-/*hr.top {*/
-  /*margin-top: 30px;*/
-  /*margin-bottom: 0px;*/
-/*}*/
+hr.top {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
 
-/*hr.bottom {*/
-  /*margin: 0px;*/
-/*}*/
+hr.bottom {
+  margin: 0px;
+}
 
 p {
   font-size: 1.2em;
