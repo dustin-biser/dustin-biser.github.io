@@ -35,6 +35,9 @@ div.wrapper {
 
 #content {
     clear:both;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    padding: 0px;
 }
 
 #email {
@@ -80,15 +83,27 @@ hr {
   padding: 0px;
 }
 
-hr.top {
-  margin-top: 30px;
-  margin-bottom: 0px;
+/*hr.top {*/
+  /*margin-top: 30px;*/
+  /*margin-bottom: 0px;*/
+/*}*/
+
+/*hr.bottom {*/
+  /*margin: 0px;*/
+/*}*/
+
+p {
+  font-size: 1.2em;
+  text-align:left;
 }
 
-hr.bottom {
-  /*margin-top: 0px;*/
-  /*margin-bottom: 10px;*/
-  margin: 0px;
+#bio {
+    width: 50%;
+    float: left;
+}
+
+#portrait {
+    float: right;
 }
 
 
