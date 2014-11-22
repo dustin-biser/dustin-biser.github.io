@@ -1,7 +1,9 @@
 
 /* Global Settings */
 html * {
-    font-family: 'Lora', serif;
+    /*font-family: 'Lora', serif;*/
+    font-family: Palatino, serif;
+    font-style: normal;
 }
 
 body {
@@ -43,6 +45,10 @@ div.wrapper {
 #email {
     padding:0px;
     margin:0px;
+}
+
+a {
+  font-size: 85%;
 }
 
 a.top:link, a.top:visited {
@@ -97,13 +103,25 @@ p {
   text-align:left;
 }
 
-#bio {
-    width: 50%;
+i {
+    font-style: italic;
+}
+
+#normal {
     float: left;
+    color: #CCCCCC;
+}
+
+#bio {
+    float: left;
+    font-family: Palatino, serif;
+    font-size: 80%;
+    color: #CCCCCC;
 }
 
 #portrait {
-    float: right;
+    float: left;
+    padding-right: 50px;
 }
 
 

@@ -30,93 +30,141 @@
           <hr class="top">
           <ul>
           <li><a class="top" href="index.html">About Me</a></li>
-          <li><a class="top" href="demos.html">Graphics Demos</a></li>
+          <li><a class="top" href="demos.html">Demos</a></li>
           <li><a class="top" href="projects.html">Projects</a></li>
           <li><a target="_blank" class="top" href="resume.pdf">Resume</a></li>
           </ul>
         </div>
 
-  <section>
-  <h1>Graphics Demos</h1>
-  <h3>C++, OpenGL, and GLSL</h3>
+    <h1>Simulation Demos</h1>
+    <h3>C++, and OpenGL</h3>
 
+    <hr class="top"></hr>
+    <p>
+      <h3>Eulerian Grid-Based Smoke Simulation</h3>
+    </p>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/w2p3etBWEmY" frameborder="0" allowfullscreen></iframe>
+    <p id="normal">
+        This is a grid-based method for simulating smoke.  Semi-Lagrangian
+        advection was used with an RK2 backtrace and bilinear interpolation.
+        This work is based off the method's introduced by Jos Stam in his paper
+        <i>Stable Fluids</i>.
+    </br>
+    </br>
+    <a target="_blank" href="https://github.com/dustin-biser/FluidSim/tree/master/examples/GridBased">Source Code</a>
+    </br>
+    </br>
+    <a target="_blank" href="http://pages.cs.wisc.edu/~chaol/data/cs777/stam-stable_fluids.pdf">Reference</a>
+    </br>
+        Stam, Jos. "Stable fluids". <i>Proceedings of the 26th annual conference on Computer graphics
+         and interactive techniques.</i> ACM Press/Addison-Wesley Publishing Co., 1999.
+    </p>
+
+    <p>
+      <h3>Smooth Particle Hydrodynamics</h3>
+    </p>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/TikO7XSWayc" frameborder="0" allowfullscreen></iframe>
+    <p id="normal">
+        Based off the paper by Matthias Muller et al., <i>Particle-Based Fluid
+        Simulation for Interactive Applications</i>.  A link to this paper is provided
+        below.
+    </br>
+    </br>
+        <a target="_blank" href="https://github.com/dustin-biser/FluidSim/tree/master/examples/SPH">Source Code</a>
+    </br>
+    </br>
+    <a target="_blank" href="http://matthias-mueller-fischer.ch/publications/sca03.pdf">Reference</a>
+    </br>
+        Müller, Matthias, David Charypar, and Markus Gross. "Particle-based fluid
+        simulation for interactive applications." <i>Proceedings of the 2003 ACM
+        SIGGRAPH/Eurographics symposium on Computer animation</i>. Eurographics
+        Association, 2003.
+    </p>
+
+    <p>&nbsp</p>
+    <p>&nbsp</p>
 
 
 
   <hr class="top">
   <p>
-  <h3>Shadowing Mapping</h3>
+  <h1>Graphics Demos</h1>
+  <h3>C++, and OpenGL</h3>
   </p>
+  <hr class="top">
+
   <p>
-  Implementation of the Shadow Mapping algorithm.
+      <h3>Shadowing Mapping</h3>
+  </p>
+  <p id="normal">
+      Implementation of the Shadow Mapping algorithm.
   </p>
   <iframe width="480" height="360" src="//www.youtube-nocookie.com/embed/XF30cLr_-V8" frameborder="0" allowfullscreen></iframe>
-  <p>
-  </br>
-  Depth Buffer offsets were used to prevent shadow surface acne.
-  </br>
-  Percentage Closer filtering was applied to the shadow map in order to anti-alias shadow edges.
+  <p id="normal">
+      </br>
+      Depth Buffer offsets were used to prevent shadow surface acne.
+      </br>
+      Percentage Closer filtering was applied to the shadow map in order to anti-alias shadow edges.
   </p>
   <p>
-  <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/ShadowMap.hpp">ShadowMap.hpp</a>
-  |
-  <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/ShadowMap.cpp">ShadowMap.cpp</a>
+      <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/ShadowMap.hpp">ShadowMap.hpp</a>
+      |
+      <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/ShadowMap.cpp">ShadowMap.cpp</a>
   </p>
 
 
-
-
-  <hr class="top">
+  <hr class="top"></hr>
   <p>
-  <h3>Quaternion Based Camera</h3>
+      <h3>Quaternion Based Camera</h3>
   </p>
-  <p>
-  Demo of a quaternion backed camera implementation.
+  <p id="normal">
+      Demo of a quaternion backed camera implementation.
   </p>
   <iframe width="480" height="360" src="//www.youtube-nocookie.com/embed/er7YPKvQQAM" frameborder="0" allowfullscreen></iframe>
-  <p>
-  The pose of the camera is computed and stored within a quaternion.
+
+  <p id="normal">
+      The pose of the camera is computed and stored within a quaternion.
+      </br>
+      </br>
+      View matrix calculations are computed within the Camera class via lazy evaluation to increase performance.
+      </br>
+      </br>
+      After a set number of rotations, the camera automatically renormalizes it's
+      local coordinate system to prevent numerical error accumulation. 
   </p>
-  <p>
-  View matrix calculations are computed within the Camera class via lazy evaluation to increase performance.
-  </p>
-  <p>
-  After a set number of rotations, the camera automatically renormalizes it's
-  local coordinate system to prevent numerical error accumulation. 
-  </p>
+
   <p>
    <a target="_blank" href=" https://github.com/dustin-biser/Rigid3D/blob/master/examples/CameraExample.hpp">CameraExample.hpp</a>
    |
    <a target="_blank" href=" https://github.com/dustin-biser/Rigid3D/blob/master/examples/CameraExample.cpp">CameraExample.cpp</a>
-  </p>
-  <p>
+   </br>
+
    <a target="_blank" href=" https://github.com/dustin-biser/Rigid3D/tree/master/src/Rigid3D/Graphics/Camera.hpp">Camera.hpp</a>
    |
    <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/tree/master/src/Rigid3D/Graphics/Camera.cpp">Camera.cpp</a>
-  </p>
-  <p>
+   </br>
+
    <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/tree/master/src/Rigid3D/Graphics/CameraController.hpp">CameraController.hpp</a>
    |
    <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/tree/master/src/Rigid3D/Graphics/CameraController.cpp">CameraController.cpp</a>
+   </br>
   </p>
 
 
-
-  <hr class="top">
+  <hr class="top"></hr>
   <p>
-  <h3>Flat versus Smooth Shading</h3>
+      <h3>Flat versus Smooth Shading</h3>
   </p>
-  <p>
-  Demo showing the difference between smooth and flat shading effects.
+  <p id="normal">
+      Demo showing the difference between smooth and flat shading effects.
   </p>
   <iframe width="480" height="360" src="//www.youtube-nocookie.com/embed/t6gYn4cV1vw" frameborder="0" allowfullscreen></iframe>
-  <p>
-  <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/FlatSmoothShading_Example.hpp">FlatSmoothShading.hpp</a>
-  |
-  <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/FlatSmoothShading_Example.cpp">FlatSmoothShading.cpp</a>
+  <p id="normal">
+      <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/FlatSmoothShading_Example.hpp">FlatSmoothShading.hpp</a>
+      |
+      <a target="_blank" href="https://github.com/dustin-biser/Rigid3D/blob/master/examples/FlatSmoothShading_Example.cpp">FlatSmoothShading.cpp</a>
   </p>
 
-  <section>
   </div>
 
 
