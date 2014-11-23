@@ -99,7 +99,7 @@ hr.bottom {
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align:left;
 }
 
@@ -115,7 +115,6 @@ i {
 #bio {
     float: left;
     font-family: Palatino, serif;
-    font-size: 80%;
     color: #CCCCCC;
 }
 
