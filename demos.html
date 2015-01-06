@@ -42,9 +42,34 @@
 
     <hr class="top"></hr>
     <p>
+      <h3>GPU Smoke Simulation</h3>
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=fL8uB-VsNmc&feature=youtu.be" frameborder="0" allowfullscreen></iframe>
+    <p id="normal">
+        GPU implementation for simulating smoke.  My implementation uses
+        semi-Lagrangian advection with an RK2 backtrace and trilinear
+        interpolation.  In order to visual the smoke density, I wrote GPU-based
+        ray-casting volume renderer with a noise filter for reducing sampling
+        artifacts.
+          </br>
+    </br>
+    </br>
+
+    <a target="_blank"
+        href="https://github.com/dustin-biser/FluidSim/tree/master/examples/GridBased/GPU_Impl/3D_SmokeSim">Source
+    Code GPU Sim</a>
+    </br>
+    <a target="_blank"
+        href="https://github.com/dustin-biser/FluidSim/tree/master/examples/VolumeRendering">Source
+    Code Volume Renderer</a>
+    <p>&nbsp</p>
+
+
+    <hr class="top"></hr>
+    <p>
       <h3>Eulerian Grid-Based Smoke Simulation</h3>
     </p>
-    <iframe width="560" height="315" src="//www.youtube.com/embed/OEZStdIOaM8" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=7G5BK4mdsNk" frameborder="0" allowfullscreen></iframe>
     <p id="normal">
         This is a grid-based method for simulating smoke.  Semi-Lagrangian
         advection was used with an RK2 backtrace and bilinear interpolation.
