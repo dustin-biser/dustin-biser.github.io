@@ -46,11 +46,11 @@
     </p>
 <iframe width="560" height="315" src="//www.youtube.com/embed/fL8uB-VsNmc" frameborder="0" allowfullscreen></iframe>
     <p id="normal">
-        GPU implementation for simulating smoke.  My implementation uses
-        semi-Lagrangian advection with an RK2 backtrace and trilinear
-        interpolation.  In order to visual the smoke density, I wrote GPU-based
-        ray-casting volume renderer with a noise filter for reducing sampling
-        artifacts.
+        This GPU smoke simulation uses semi-Lagrangian advection with an RK2
+        backtrace and trilinear interpolation. At each time step, the pressure
+        at each fluid cell is solved for using parallel Jacobi iterations.  In
+        order to visualize the smoke density, I wrote a GPU-based ray-casting
+        volume renderer with a noise filter for reducing sampling artifacts.
           </br>
     </br>
     </br>
