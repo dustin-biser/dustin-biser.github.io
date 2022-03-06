@@ -3,7 +3,7 @@ baseURL = "https://dustin-biser.github.io"
 defaultContentLanguage = "en"
 # language code
 languageCode = "en"
-title = "Combat Design in-Depth"
+title = "Dustin Biser | Combat Designer"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
@@ -12,7 +12,21 @@ theme = "LoveIt"
   # LoveIt theme version
   version = "0.2.X"
 
+# Author config
+[author]
+  name = "Dustin"
+  email = "dustinbiser@gmail.com"
+  link = "/about/"
+
 [menu]
+  [[menu.main]]
+    identifier = "portfolio"
+    pre = ""
+    post = ""
+    name = "Portfolio"
+    url = "/portfolio/"
+    title = ""
+    weight = 1
   [[menu.main]]
     identifier = "posts"
     # you can add extra information before the name (HTML format is supported), such as icons
@@ -23,31 +37,31 @@ theme = "LoveIt"
     url = "/posts/"
     # title will be shown when you hover on this menu link
     title = ""
-    weight = 1
-  [[menu.main]]
-    identifier = "portfolio"
-    pre = ""
-    post = ""
-    name = "Portfolio"
-    url = "/portfolio/"
-    title = ""
     weight = 2
+  # [[menu.main]]
+  #   identifier = "categories"
+  #   pre = ""
+  #   post = ""
+  #   name = "Categories"
+  #   url = "/categories/"
+  #   title = ""
+  #   weight = 3
+  # [[menu.main]]
+  #   identifier = "tags"
+  #   pre = ""
+  #   post = ""
+  #   name = "Tags"
+  #   url = "/tags/"
+  #   title = ""
+  #   weight = 4
   [[menu.main]]
-    identifier = "categories"
+    identifier = "about"
     pre = ""
     post = ""
-    name = "Categories"
-    url = "/categories/"
+    name = "About"
+    url = "/about/"
     title = ""
     weight = 3
-  [[menu.main]]
-    identifier = "tags"
-    pre = ""
-    post = ""
-    name = "Tags"
-    url = "/tags/"
-    title = ""
-    weight = 4
 
 # Markup related configuration in Hugo
 [markup]
@@ -55,3 +69,52 @@ theme = "LoveIt"
   [markup.highlight]
     # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
     noClasses = false
+
+
+  # Home page config
+  [params.home]
+    # LoveIt NEW | 0.2.0 amount of RSS pages
+    rss = 10
+    # Home page profile
+    [params.home.profile]
+      enable = true
+      # Gravatar Email for preferred avatar in home page
+      gravatarEmail = ""
+      # URL of avatar shown in home page
+      avatarURL = "/images/avatar.png"
+      # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
+      title = "Home Title"
+      # subtitle shown in home page
+      subtitle = "This is My New Hugo Site"
+      # whether to use typeit animation for subtitle
+      typeit = false 
+      # whether to show social links
+      social = true
+      # LoveIt NEW | 0.2.0 disclaimer (HTML format is supported)
+      disclaimer = ""
+    # Home page posts
+    [params.home.posts]
+      enable = true
+      # special amount of posts in each home posts page
+      paginate = 6
+      # LoveIt DELETED | 0.2.0 replaced with hiddenFromHomePage in params.page
+      # default behavior when you don't set "hiddenFromHomePage" in front matter
+      defaultHiddenFromHomePage = false
+
+
+# Comments
+ [params.page.comment]
+      enable = true
+      # Disqus comment config
+      [params.page.comment.disqus]
+        # LoveIt NEW | 0.1.1
+        enable = true 
+        # Disqus shortname to use Disqus in posts
+        shortname = "dustinbiser"
+
+
+[params.social]
+    Linkedin = "dustinbiser"
+    Twitter = "dustinbiser"
+    Email = "dustinbiser@gmail.com"
+    RSS = true # LoveIt NEW | 0.2.0
