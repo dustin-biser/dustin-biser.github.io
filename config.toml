@@ -3,7 +3,7 @@ baseURL = "https://dustin-biser.github.io"
 defaultContentLanguage = "en"
 # language code
 languageCode = "en"
-title = "Dustin Biser | Combat Designer"
+title = "Combat Design Dojo"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
@@ -11,6 +11,21 @@ theme = "LoveIt"
 [params]
   # LoveIt theme version
   version = "0.2.X"
+  # site description
+  # description = "This is My New Hugo Site"
+  # site keywords
+  keywords = ["Combat", "Design", "CombatDesign", "Game", "GameDesign", "Unreal", "Analysis", "Blog"]
+  # site default theme ("light", "dark", "auto")
+  defaultTheme = "dark"
+  # public git repo url only then enableGitInfo is true
+  gitRepo = ""
+  # LoveIt NEW | 0.1.1 which hash function used for SRI, when empty, no SRI is used
+  # ("sha256", "sha384", "sha512", "md5")
+  fingerprint = ""
+  # LoveIt NEW | 0.2.0 date format
+  dateFormat = "2006-01-02"
+  # website images for Open Graph and Twitter Cards
+  images = ["/logo.png"]
 
 # Author config
 [author]
@@ -19,14 +34,6 @@ theme = "LoveIt"
   link = "/about/"
 
 [menu]
-  [[menu.main]]
-    identifier = "portfolio"
-    pre = ""
-    post = ""
-    name = "Portfolio"
-    url = "/portfolio/"
-    title = ""
-    weight = 1
   [[menu.main]]
     identifier = "posts"
     # you can add extra information before the name (HTML format is supported), such as icons
@@ -37,7 +44,7 @@ theme = "LoveIt"
     url = "/posts/"
     # title will be shown when you hover on this menu link
     title = ""
-    weight = 2
+    weight = 1
   # [[menu.main]]
   #   identifier = "categories"
   #   pre = ""
@@ -46,14 +53,14 @@ theme = "LoveIt"
   #   url = "/categories/"
   #   title = ""
   #   weight = 3
-  # [[menu.main]]
-  #   identifier = "tags"
-  #   pre = ""
-  #   post = ""
-  #   name = "Tags"
-  #   url = "/tags/"
-  #   title = ""
-  #   weight = 4
+  [[menu.main]]
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "Tags"
+    url = "/tags/"
+    title = ""
+    weight = 2
   [[menu.main]]
     identifier = "about"
     pre = ""
@@ -70,6 +77,43 @@ theme = "LoveIt"
     # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
     noClasses = false
 
+# Header config
+[params.header]
+  # desktop header mode ("fixed", "normal", "auto")
+  desktopMode = "fixed"
+  # mobile header mode ("fixed", "normal", "auto")
+  mobileMode = "auto"
+  # LoveIt NEW | 0.2.0 Header title config
+  [params.header.title]
+    # URL of the LOGO
+    logo = ""
+    # title name
+    name = "Combat Design Dojo"
+    # you can add extra information before the name (HTML format is supported), such as icons
+    pre = ""
+    # you can add extra information after the name (HTML format is supported), such as icons
+    post = ""
+    # LoveIt NEW | 0.2.5 whether to use typeit animation for title name
+    typeit = false
+
+# Footer config
+[params.footer]
+  enable = true
+  # LoveIt NEW | 0.2.0 Custom content (HTML format is supported)
+  custom = ''
+  # LoveIt NEW | 0.2.0 whether to show Hugo and theme info
+  hugo = true
+  # LoveIt NEW | 0.2.0 whether to show copyright info
+  copyright = true
+  # LoveIt NEW | 0.2.0 whether to show the author
+  author = false
+  # Site creation time
+  since = 2022
+  # ICP info only in China (HTML format is supported)
+  icp = ""
+  # license info (HTML format is supported)
+  license = '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />Content licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.'
+
 
   # Home page config
   [params.home]
@@ -81,15 +125,15 @@ theme = "LoveIt"
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "/images/avatar.png"
+      avatarURL = ""
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
-      title = "Home Title"
+      # title = "Home Title"
       # subtitle shown in home page
-      subtitle = "This is My New Hugo Site"
+      # subtitle = "Subtitle for landing page"
       # whether to use typeit animation for subtitle
       typeit = false 
       # whether to show social links
-      social = true
+      social = false
       # LoveIt NEW | 0.2.0 disclaimer (HTML format is supported)
       disclaimer = ""
     # Home page posts

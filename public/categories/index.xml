@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Categories - Category - Dustin Biser | Combat Designer</title>
+        <title>Categories - Category - Combat Design Dojo</title>
         <link>https://dustin-biser.github.io/categories/</link>
-        <description>Categories - Category - Dustin Biser | Combat Designer</description>
+        <description>Categories - Category - Combat Design Dojo</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dustinbiser@gmail.com (Dustin)</managingEditor>
             <webMaster>dustinbiser@gmail.com (Dustin)</webMaster><atom:link href="https://dustin-biser.github.io/categories/" rel="self" type="application/rss+xml" /></channel>
 </rss>
