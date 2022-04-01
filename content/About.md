@@ -7,11 +7,11 @@ comment:
 ---
 
 
-![Image1](/images/Portrait.png)
+<!-- ![Image1](/images/Portrait.png) -->
 
 Thanks for visiting Combat Design Dojo!
 
-My name is Dustin and I'm the author of this site.  I've been in the game industry since 2017 and contributed to several AAA titles.  This website came about as a means to share my tips and tricks from experience in designing combat for games.  Before I created this site, trying to find resources online that went deep into the design of combat systems and features were scarce with little technical details available. My goal is to fill this gab and share knowledge on the low level workings of designing games with compelling combat.
+My name is Dustin and I'm the author of this site.  I've been in the game industry since 2017 and contributed to several AAA titles. This website came about as a means to share my tips and tricks from experience in designing combat for games.  Before I created this site, trying to find resources online that went deep into the design of combat systems and features were scarce with little technical details available. My goal is to fill this gap and share knowledge on the low level workings of designing games with compelling combat.
 
 ***
 

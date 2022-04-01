@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Analyzing Combat Frames with FFMPEG - Combat Design Dojo</title><meta name="Description" content=""><meta property="og:title" content="Analyzing Combat Frames with FFMPEG" />
 <meta property="og:description" content="When analyzing combat in other studio&rsquo;s games or in the combat of games I&rsquo;m currently developing, I find it useful to be able to split out individual frames of recorded video of gameplay in order to step through the frames of the game one by one.
-Get ready Download FFmpeg.
+Recommended Tools Download FFmpeg.
 Previewing ffmpeg settings Preview video frames with ffplay
 @REM For each *.mp4 file in the current directory, play it with the current settings." />
 <meta property="og:type" content="article" />
@@ -20,7 +20,7 @@ Previewing ffmpeg settings Preview video frames with ffplay
 
 <meta name="twitter:title" content="Analyzing Combat Frames with FFMPEG"/>
 <meta name="twitter:description" content="When analyzing combat in other studio&rsquo;s games or in the combat of games I&rsquo;m currently developing, I find it useful to be able to split out individual frames of recorded video of gameplay in order to step through the frames of the game one by one.
-Get ready Download FFmpeg.
+Recommended Tools Download FFmpeg.
 Previewing ffmpeg settings Preview video frames with ffplay
 @REM For each *.mp4 file in the current directory, play it with the current settings."/>
 <meta name="application-name" content="Combat Design Dojo">
@@ -92,19 +92,25 @@ Previewing ffmpeg settings Preview video frames with ffplay
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#recommended-tools">Recommended Tools</a></li>
+    <li><a href="#previewing-ffmpeg-settings">Previewing ffmpeg settings</a></li>
+    <li><a href="#batch-exporting-of-frames">Batch Exporting of Frames</a></li>
+  </ul>
+</nav></div>
             </div><div class="content" id="content"><!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <p>When analyzing combat in other studio&rsquo;s games or in the combat of games I&rsquo;m currently developing, I find it useful to be able to split out individual frames of recorded video of gameplay in order to step through the frames of the game one by one.</p>
-<h1 id="get-ready">Get ready</h1>
+<h2 id="recommended-tools">Recommended Tools</h2>
 <p>Download <a href="https://ffmpeg.org/" target="_blank" rel="noopener noreffer">FFmpeg</a>.</p>
-<h1 id="previewing-ffmpeg-settings">Previewing ffmpeg settings</h1>
+<h2 id="previewing-ffmpeg-settings">Previewing ffmpeg settings</h2>
 <p>Preview video frames with <strong>ffplay</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">@</span><span class="c1">REM For each *.mp4 file in the current directory, play it with the current settings.</span>
 <span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffplay -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -vf <span class="s2">&#34;crop=2560:1920&#34;</span>
 
 <span class="k">pause</span>
-</code></pre></div><h1 id="batch-exporting-of-frames">Batch Exporting of Frames</h1>
+</code></pre></div><h2 id="batch-exporting-of-frames">Batch Exporting of Frames</h2>
 <p>Dump video frames with <strong>ffmpeg</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">@</span><span class="c1">REM For each *.mp4 file in the current directory make a folder with the same name as the .mp4 file name</span>
 <span class="p">@</span><span class="c1">REM and then output individual files of the .mp4 into the newly created directory with the same name.</span>

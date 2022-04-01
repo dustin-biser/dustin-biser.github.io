@@ -162,3 +162,24 @@ theme = "LoveIt"
     Twitter = "dustinbiser"
     Email = "dustinbiser@gmail.com"
     RSS = true # LoveIt NEW | 0.2.0
+
+# [params.search]
+#     enable = true
+#     # type of search engine ("lunr", "algolia")
+#     type = "lunr"
+#     # max index length of the chunked content
+#     contentLength = 4000
+#     # placeholder of the search bar
+#     placeholder = ""
+#     # LoveIt NEW | 0.2.1 max number of results length
+#     maxResultLength = 10
+#     # LoveIt NEW | 0.2.3 snippet length of the result
+#     snippetLength = 30
+#     # LoveIt NEW | 0.2.1 HTML tag name of the highlight part in results
+#     highlightTag = "em"
+#     # LoveIt NEW | 0.2.4 whether to use the absolute URL based on the baseURL in search index
+#     absoluteURL = false
+#     [params.search.algolia]
+#       index = ""
+#       appID = ""
+#       searchKey = ""

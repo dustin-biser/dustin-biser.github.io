@@ -17,10 +17,11 @@ My first post -->
 
 When analyzing combat in other studio's games or in the combat of games I'm currently developing, I find it useful to be able to split out individual frames of recorded video of gameplay in order to step through the frames of the game one by one.
 
-# Get ready
+## Recommended Tools
 Download [FFmpeg](https://ffmpeg.org/).
 
-# Previewing ffmpeg settings
+
+## Previewing ffmpeg settings
 Preview video frames with **ffplay** 
 
 ```bat
@@ -31,7 +32,7 @@ pause
 ```
 
 
-# Batch Exporting of Frames
+## Batch Exporting of Frames
 Dump video frames with **ffmpeg** 
 ```bat
 @REM For each *.mp4 file in the current directory make a folder with the same name as the .mp4 file name
