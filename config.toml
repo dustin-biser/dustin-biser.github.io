@@ -8,6 +8,12 @@ title = "Combat Design Dojo"
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
 
+# Author config
+[author]
+  name = "Dustin"
+  email = "dustinbiser@gmail.com"
+  link = "/about/"
+
 [params]
   # LoveIt theme version
   version = "0.2.X"
@@ -27,11 +33,13 @@ theme = "LoveIt"
   # website images for Open Graph and Twitter Cards
   images = ["/logo.png"]
 
-# Author config
-[author]
-  name = "Dustin"
-  email = "dustinbiser@gmail.com"
-  link = "/about/"
+[params.page.toc]
+  # whether to enable the table of the contents
+  enable = true
+  # LoveIt NEW | 0.2.9 whether to keep the static table of the contents in front of the post
+  keepStatic = false 
+  # whether to make the table of the contents in the sidebar automatically collapsed
+  auto = false 
 
 [menu]
   [[menu.main]]
