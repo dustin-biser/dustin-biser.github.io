@@ -2,7 +2,7 @@
     <channel>
         <title>Combat Design Dojo</title>
         <link>https://dustin-biser.github.io/</link>
-        <description>Combat Design Dojo</description>
+        <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dustinbiser@gmail.com (Dustin)</managingEditor>
             <webMaster>dustinbiser@gmail.com (Dustin)</webMaster><lastBuildDate>Mon, 10 Jan 2022 22:25:52 -0800</lastBuildDate>
             <atom:link href="https://dustin-biser.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -10,9 +10,10 @@
     <title>Analyzing Combat Frames with FFmpeg</title>
     <link>https://dustin-biser.github.io/posts/analyzing-combat-frames-ffmpeg/</link>
     <pubDate>Mon, 10 Jan 2022 22:25:52 -0800</pubDate>
-    <author>Author</author>
+    <author>Dustin</author>
     <guid>https://dustin-biser.github.io/posts/analyzing-combat-frames-ffmpeg/</guid>
     <description><![CDATA[Answering Key Questions I often find myself analyzing the combat of action games that I enjoy playing. Doing so helps me answer questions such as:
  What makes the character&rsquo;s attacks and abilities feel so satisfying? Why are combat encounters so enjoyable in this game? Why does my character feel like an unstoppable force of nature? What makes the controls and character movement feel so fluid?  Conversely, I also find it educating to analyze the combat of games I find frustrating.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>
