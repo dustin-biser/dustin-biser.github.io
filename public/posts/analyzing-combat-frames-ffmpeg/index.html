@@ -5,11 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Analyzing Combat Frames with FFMPEG - Combat Design Dojo</title><meta name="Description" content=""><meta property="og:title" content="Analyzing Combat Frames with FFMPEG" />
-<meta property="og:description" content="When analyzing combat in other studio&rsquo;s games or in the combat of games I&rsquo;m currently developing, I find it useful to be able to split out individual frames of recorded video of gameplay in order to step through the frames of the game one by one.
-Recommended Tools Download FFmpeg.
-Previewing ffmpeg settings Preview video frames with ffplay
-@REM For each *.mp4 file in the current directory, play it with the current settings." />
+        <title>Analyzing Combat Frames with FFmpeg - Combat Design Dojo</title><meta name="Description" content=""><meta property="og:title" content="Analyzing Combat Frames with FFmpeg" />
+<meta property="og:description" content="Answering Key Questions I often find myself analyzing the combat of action games that I enjoy playing. Doing so helps me answer questions such as:
+ What makes the character&rsquo;s attacks and abilities feel so satisfying? Why are combat encounters so enjoyable in this game? Why does my character feel like an unstoppable force of nature? What makes the controls and character movement feel so fluid?  Conversely, I also find it educating to analyze the combat of games I find frustrating." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dustin-biser.github.io/posts/analyzing-combat-frames-ffmpeg/" /><meta property="og:image" content="https://dustin-biser.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-10T22:25:52-08:00" />
@@ -18,11 +16,9 @@ Previewing ffmpeg settings Preview video frames with ffplay
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://dustin-biser.github.io/logo.png"/>
 
-<meta name="twitter:title" content="Analyzing Combat Frames with FFMPEG"/>
-<meta name="twitter:description" content="When analyzing combat in other studio&rsquo;s games or in the combat of games I&rsquo;m currently developing, I find it useful to be able to split out individual frames of recorded video of gameplay in order to step through the frames of the game one by one.
-Recommended Tools Download FFmpeg.
-Previewing ffmpeg settings Preview video frames with ffplay
-@REM For each *.mp4 file in the current directory, play it with the current settings."/>
+<meta name="twitter:title" content="Analyzing Combat Frames with FFmpeg"/>
+<meta name="twitter:description" content="Answering Key Questions I often find myself analyzing the combat of action games that I enjoy playing. Doing so helps me answer questions such as:
+ What makes the character&rsquo;s attacks and abilities feel so satisfying? Why are combat encounters so enjoyable in this game? Why does my character feel like an unstoppable force of nature? What makes the controls and character movement feel so fluid?  Conversely, I also find it educating to analyze the combat of games I find frustrating."/>
 <meta name="application-name" content="Combat Design Dojo">
 <meta name="apple-mobile-web-app-title" content="Combat Design Dojo"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -30,12 +26,12 @@ Previewing ffmpeg settings Preview video frames with ffplay
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Analyzing Combat Frames with FFMPEG",
+        "headline": "Analyzing Combat Frames with FFmpeg",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dustin-biser.github.io\/posts\/analyzing-combat-frames-ffmpeg\/"
-        },"genre": "posts","keywords": "Breakdown","wordcount":  153 ,
+        },"genre": "posts","keywords": "Breakdown","wordcount":  982 ,
         "url": "https:\/\/dustin-biser.github.io\/posts\/analyzing-combat-frames-ffmpeg\/","datePublished": "2022-01-10T22:25:52-08:00","dateModified": "2022-01-10T22:25:52-08:00","publisher": {
             "@type": "Organization",
             "name": "Dustin"},"author": {
@@ -83,10 +79,10 @@ Previewing ffmpeg settings Preview video frames with ffplay
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Analyzing Combat Frames with FFMPEG</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Analyzing Combat Frames with FFmpeg</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Dustin</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-10">2022-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;153 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-10">2022-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;982 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -94,46 +90,128 @@ Previewing ffmpeg settings Preview video frames with ffplay
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#recommended-tools">Recommended Tools</a></li>
-    <li><a href="#previewing-ffmpeg-settings">Previewing ffmpeg settings</a></li>
-    <li><a href="#batch-exporting-of-frames">Batch Exporting of Frames</a></li>
+    <li>
+      <ul>
+        <li><a href="#answering-key-questions">Answering Key Questions</a></li>
+        <li><a href="#frame-exporting-workflow">Frame Exporting Workflow</a></li>
+        <li><a href="#recommended-tools-and-setup">Recommended Tools and Setup</a></li>
+        <li><a href="#trimming-video">Trimming Video</a></li>
+        <li><a href="#preview-settings-before-export">Preview Settings Before Export</a></li>
+        <li><a href="#exporting-frames">Exporting Frames</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
-<p>When analyzing combat in other studio&rsquo;s games or in the combat of games I&rsquo;m currently developing, I find it useful to be able to split out individual frames of recorded video of gameplay in order to step through the frames of the game one by one.</p>
-<h2 id="recommended-tools">Recommended Tools</h2>
-<p>Download <a href="https://ffmpeg.org/" target="_blank" rel="noopener noreffer">FFmpeg</a>.</p>
-<h2 id="previewing-ffmpeg-settings">Previewing ffmpeg settings</h2>
-<p>Preview video frames with <strong>ffplay</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">@</span><span class="c1">REM For each *.mp4 file in the current directory, play it with the current settings.</span>
-<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffplay -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -vf <span class="s2">&#34;crop=2560:1920&#34;</span>
+<h3 id="answering-key-questions">Answering Key Questions</h3>
+<p>I often find myself analyzing the combat of action games that I enjoy playing.  Doing so helps me answer questions such as:</p>
+<ul>
+<li>What makes the character&rsquo;s attacks and abilities feel so satisfying?</li>
+<li>Why are combat encounters so enjoyable in this game?</li>
+<li>Why does my character feel like an unstoppable force of nature?</li>
+<li>What makes the controls and character movement feel so fluid?</li>
+</ul>
+<p>Conversely, I also find it educating to analyze the combat of games I find frustrating.  In doing so, I try to answer questions like:</p>
+<ul>
+<li>Why do I feel overwhelmed when multiple enemies are on screen at once?</li>
+<li>Why does my parry not come out on time to counter the enemy&rsquo;s attack?</li>
+<li>Why do these controls feel unresponsive?</li>
+</ul>
+<p>In order to answer these questions, I like to use FFmpeg to export individual frames of recorded gameplay so that I can step through the action frame-by-frame to better understand what is happening and why it might elicit a specific feeling.</p>
+<blockquote>
+<p><strong>Disclaimer:</strong> Examples covered in this article can be achieved with various other programs and software.  FFmpeg is not the only tool that allows scrubbing through individual frames of video.  It just happens to be one of the few <em>free</em> tools that is also powerful and flexible, which is why I use it for my own work and recommend it to others.</p>
+</blockquote>
+<h3 id="frame-exporting-workflow">Frame Exporting Workflow</h3>
+<p>We&rsquo;ll be using the following workflow that allows for quick adjustment and iteration of exporting video frames so we can export only the frames we care about with the option to crop and scale the frames as needed.</p>
+<div class="mermaid" id="id-1"></div>
+<h3 id="recommended-tools-and-setup">Recommended Tools and Setup</h3>
+<p>First, grab a copy of FFmpeg if you don&rsquo;t already have the program.</p>
+<p>Link to download <a href="https://ffmpeg.org/" target="_blank" rel="noopener noreffer">FFmpeg</a>.</p>
+<p>Once you download FFmpeg, copy <code>ffmpeg.exe</code> and <code>ffplay.exe</code> into a custom folder along with the .mp4 gameplay video you would like to analyze, like so:</p>
+<pre tabindex="0"><code>\CustomFolder
+    - ffmpeg.exe
+    - ffplay.exe
+    - GameplayVideo.mp4
+</code></pre><p> 
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">For recording your <code>GameplayVideo.mp4</code>, there are many software programs available, but if you happen to have an Nvidia GPU, then Nvidia Shadowplay is a great free choice which allows syncing video to 60fps so no gameplay frames are lost during recording.</div>
+        </div>
+    </div></p>
+<h3 id="trimming-video">Trimming Video</h3>
+<p>It&rsquo;s common to record a longer play session of gameplay and then go back and analyze smaller sections of the video later.  That&rsquo;s where the first stage of this workflow comes in. We can tell FFmpeg to copy a smaller section of our gameplay video to a new video that&rsquo;ll we analyze in detail afterward.</p>
+<p>To do this, create a new file <code>TrimVideo.bat</code> and place it in your <code>CustomFolder</code>.</p>
+<pre tabindex="0"><code>\CustomFolder
+    - TrimVideo.bat &lt;--
+    - ffmpeg.exe
+    - ffplay.exe
+    - GameplayVideo.mp4
+</code></pre><p>Then copy and paste the following text into <code>TrimVideo.bat</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">:</span><span class="c1">: Loop over all &#34;.mp4&#34; video files in the current directory </span>
+<span class="p">:</span><span class="c1">: and trim/copy the video to a new file called &#34;[VideoName] trimmed.mp4&#34;</span>
+<span class="p">:</span><span class="c1">: -ss hh:mm:ss, sets the start time (h:hours, m:minutes, s:seconds)</span>
+<span class="p">:</span><span class="c1">: -t hh:mm:ss, sets the end time (h:hours, m:minutes, s:seconds)</span>
+<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffmpeg -ss 00:00:02 -t 00:00:10 -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -c copy <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">~nA trimmed.mp4&#34;</span>
+<span class="k">pause</span>
+</code></pre></div><p>This script will take any .mp4 video in the current directory and copy it to a new file called <code>[VideoName] trimmed.mp4</code> with a start time of 2 seconds, and an end time of 10 seconds.  Feel free to change the start and end time to fit your needs.</p>
+<p>With all the files listed in the <code>\CustomFolder</code> above, you can now double click to run <code>TrimVideo.bat</code>, which will create a new file called <code>GameplayVideo trimmed.mp4</code>, which is our shorter, trimmed copy of our original gameplay video.</p>
+<p>If the trimmed .mp4 video looks good, you can now remove the original <code>GameplayVideo.mp4</code> from the <code>\CustomFolder</code> directory.  Your <code>\CustomFolder</code> should now contain following:</p>
+<pre tabindex="0"><code>\CustomFolder
+    - TrimVideo.bat
+    - ffmpeg.exe
+    - ffplay.exe
+    - GameplayVideo trimmed.mp4 &lt;--
+</code></pre><h3 id="preview-settings-before-export">Preview Settings Before Export</h3>
+<p>Next we&rsquo;ll write a short script to allow us to preview the contents of <code>GameplayVideo trimmed.mp4</code> so that we can test out scaling and cropping parameters quickly before exporting all the individual frames.</p>
+<p>Create a <code>PreviewFrames.bat</code> file and copy paste the following code into it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">:</span><span class="c1">: For each *.mp4 file in the current directory, preview it with the following settings:</span>
+<span class="p">:</span><span class="c1">: scale=-1:1080, resize to 1080 pixels vertically, while maintaining aspect ratio of video.</span>
+<span class="p">:</span><span class="c1">: crop=width:height:x_offset:y_offset, x-y offsets are relative to top-left corner of video.</span>
+<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffplay -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -vf <span class="s2">&#34;scale=-1:1080, crop=1024:720:0:0&#34;</span>
 
 <span class="k">pause</span>
-</code></pre></div><h2 id="batch-exporting-of-frames">Batch Exporting of Frames</h2>
-<p>Dump video frames with <strong>ffmpeg</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">@</span><span class="c1">REM For each *.mp4 file in the current directory make a folder with the same name as the .mp4 file name</span>
+</code></pre></div><p> </p>
+<p>Then place the <code>PreviewFrames.bat</code> file into our <code>CustomFolder</code> like so:</p>
+<pre tabindex="0"><code>\CustomFolder
+    - PreviewFrames.bat &lt;--
+    - TrimVideo.bat
+    - ffmpeg.exe
+    - ffplay.exe
+    - GameplayVideo trimmed.mp4
+</code></pre><p> </p>
+<p>Now you can double click and run <code>PreviewFrames.bat</code> which will preview your <code>GameplayVideo trimmed.mp4</code> in real-time with the scale and cropped size options specified. Pressing <code>SpaceBar</code> allows you to pause and resume the preview video as needed.</p>
+<p>Try out different settings for the <code>-vf &quot;scale=-1:1080, crop=1024:720:0:0&quot;</code> options to see what works best for your video.</p>
+<ul>
+<li>
+<p><code>-vf &quot;crop=700:500:20:30&quot;</code> - Keep the same video scale resolution, but crop the video with an offset starting from x=20, y=30 pixels from the top-left corner with width=700 pixels and height=500 pixels.</p>
+</li>
+<li>
+<p><code>-vf &quot;scale=1280:720</code> - Scale the video&rsquo;s resolution so that it&rsquo;s 1280 pixels wide and 720 pixels tall.  Don&rsquo;t apply any cropping.</p>
+</li>
+</ul>
+<p>Once the preview looks good with the specified size and crop settings we can then move on to creating our batch file for exporting the individual video frames.</p>
+<h3 id="exporting-frames">Exporting Frames</h3>
+<p>Next we&rsquo;ll create our final script called <code>ExportFrames.bat</code> and place it in our <code>\CustomFolder</code> directory like so:</p>
+<pre tabindex="0"><code>\CustomFolder
+    - ExportFrames.bat &lt;--
+    - PreviewFrames.bat
+    - TrimVideo.bat
+    - ffmpeg.exe
+    - ffplay.exe
+    - GameplayVideo trimmed.mp4
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">@</span><span class="c1">REM For each *.mp4 file in the current directory make a folder with the same name as the .mp4 file name</span>
 <span class="p">@</span><span class="c1">REM and then output individual files of the .mp4 into the newly created directory with the same name.</span>
 <span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> <span class="k">mkdir</span> <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">~nA&#34;</span> 
 <span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffmpeg -ss 00:00:00 -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -vf <span class="s2">&#34;crop=2560:1920&#34;</span> <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">~nA\image</span><span class="se">%%</span><span class="s2">04d.png&#34;</span> 
 
 <span class="k">pause</span>
-</code></pre></div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/CrowReaper.png"
-        data-srcset="/images/CrowReaper.png, /images/CrowReaper.png 1.5x, /images/CrowReaper.png 2x"
-        data-sizes="auto"
-        alt="/images/CrowReaper.png"
-        title="Image1" />
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/ChompyHead.png"
-        data-srcset="/images/ChompyHead.png, /images/ChompyHead.png 1.5x, /images/ChompyHead.png 2x"
-        data-sizes="auto"
-        alt="/images/ChompyHead.png"
-        title="Image2" /></p>
+</code></pre></div><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -174,5 +252,5 @@ Previewing ffmpeg settings Preview video frames with ffplay
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/mermaid/mermaid.min.css"><script type="text/javascript" src="https://dustinbiser.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/mermaid/mermaid.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"stateDiagram\n    [*] --\u003e Still\n    Still --\u003e [*]\n    Still --\u003e Moving\n    Moving --\u003e Still\n    Moving --\u003e Crash\n    Crash --\u003e [*]"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/mermaid/mermaid.min.css"><script type="text/javascript" src="https://dustinbiser.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/mermaid/mermaid.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"graph LR;\n    A(Record Gameplay Video) --\u003e B(Trim Video to Specific Section)\n    B --\u003e C(Preview Scale/Crop Settings)\n    C --\u003eE(Export Frames)"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

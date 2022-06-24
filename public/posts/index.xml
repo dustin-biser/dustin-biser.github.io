@@ -5,14 +5,12 @@
         <description>All Posts | Combat Design Dojo</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dustinbiser@gmail.com (Dustin)</managingEditor>
             <webMaster>dustinbiser@gmail.com (Dustin)</webMaster><lastBuildDate>Mon, 10 Jan 2022 22:25:52 -0800</lastBuildDate><atom:link href="https://dustin-biser.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Analyzing Combat Frames with FFMPEG</title>
+    <title>Analyzing Combat Frames with FFmpeg</title>
     <link>https://dustin-biser.github.io/posts/analyzing-combat-frames-ffmpeg/</link>
     <pubDate>Mon, 10 Jan 2022 22:25:52 -0800</pubDate>
     <author>Author</author>
     <guid>https://dustin-biser.github.io/posts/analyzing-combat-frames-ffmpeg/</guid>
-    <description><![CDATA[When analyzing combat in other studio&rsquo;s games or in the combat of games I&rsquo;m currently developing, I find it useful to be able to split out individual frames of recorded video of gameplay in order to step through the frames of the game one by one.
-Recommended Tools Download FFmpeg.
-Previewing ffmpeg settings Preview video frames with ffplay
-@REM For each *.mp4 file in the current directory, play it with the current settings.]]></description>
+    <description><![CDATA[Answering Key Questions I often find myself analyzing the combat of action games that I enjoy playing. Doing so helps me answer questions such as:
+ What makes the character&rsquo;s attacks and abilities feel so satisfying? Why are combat encounters so enjoyable in this game? Why does my character feel like an unstoppable force of nature? What makes the controls and character movement feel so fluid?  Conversely, I also find it educating to analyze the combat of games I find frustrating.]]></description>
 </item></channel>
 </rss>
