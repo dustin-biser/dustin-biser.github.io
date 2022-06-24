@@ -48,6 +48,7 @@ graph LR;
 {{< /mermaid >}}
 
 
+
 ### Recommended Tools and Setup
 
 First, grab a copy of FFmpeg if you don't already have the program.
