@@ -118,9 +118,8 @@ Create a `PreviewFrames.bat` file and copy paste the following code into it.
 ```bat
 :: For each *.mp4 file in the current directory, preview it with the following settings:
 :: scale=-1:1080, resize to 1080 pixels vertically, while maintaining aspect ratio of video.
-:: crop=width:height:x_offset:y_offset, x-y offsets are relative to top-left corner of video.
-for %%A IN (*.mp4) DO ffplay -i "%%A" -vf "scale=-1:1080, crop=1024:720:0:0"
-
+:: crop=width:height, from center of video
+for %%A IN (*.mp4) DO ffplay -i "%%A" -vf "scale=-1:1080, crop=1024:720"
 pause
 ```
 
@@ -140,7 +139,7 @@ Then place the `PreviewFrames.bat` file into our `CustomFolder` like so:
 
 Now you can double click and run `PreviewFrames.bat` which will preview your `GameplayVideo trimmed.mp4` in real-time with the scale and cropped size options specified. Pressing `SpaceBar` allows you to pause and resume the preview video as needed.
 
-Try out different settings for the `-vf "scale=-1:1080, crop=1024:720:0:0"` options to see what works best for your video. 
+Try out different settings for the `-vf "scale=-1:1080, crop=1024:720"` options to see what works best for your video. 
 
 * `-vf "crop=700:500:20:30"` - Keep the same video scale resolution, but crop the video with an offset starting from x=20, y=30 pixels from the top-left corner with width=700 pixels and height=500 pixels.
 
@@ -163,16 +162,34 @@ Next we'll create our final script called `ExportFrames.bat` and place it in our
     - GameplayVideo trimmed.mp4
 ```
 
-```bat
-@REM For each *.mp4 file in the current directory make a folder with the same name as the .mp4 file name
-@REM and then output individual files of the .mp4 into the newly created directory with the same name.
-for %%A IN (*.mp4) DO mkdir "%%~nA" 
-for %%A IN (*.mp4) DO ffmpeg -ss 00:00:00 -i "%%A" -vf "crop=2560:1920" "%%~nA\image%%04d.png" 
+Then copy the following text into our `ExportFrames.bat` file:
 
+```bat
+:: For each *.mp4 file in the current directory make a new folder with the same name
+:: and export the individual frames of the .mp4 into the new folder.
+for %%A IN (*.mp4) DO mkdir "%%~nA Frames" 
+for %%A IN (*.mp4) DO ffmpeg  -i "%%A" -vf "scale=-1:1080, crop=1024:720" ^
+"%%~nA Frames\image%%04d.png" 
 pause
 ```
 
+Make sure to copy the same scale and crop arguments used previously in `PreviewFrames.bat` to our new script above.  Then we can double click to run `ExportFrames.bat` and a new folder will be created called `\GameplayVideo trimmed Frames` containing all the exported frames from the .mp4 video.
 
+
+
+```
+\CustomFolder
+    \GameplayVideo trimmed Frames <--
+    - ExportFrames.bat
+    - PreviewFrames.bat
+    - TrimVideo.bat
+    - ffmpeg.exe
+    - ffplay.exe
+    - GameplayVideo trimmed.mp4
+```
+
+
+### Scrubbing Through Exported Frames
 
 <!-- ![Image1](/images/CrowReaper.png) -->
 

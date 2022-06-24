@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dustin-biser.github.io\/posts\/analyzing-combat-frames-ffmpeg\/"
-        },"genre": "posts","keywords": "Breakdown","wordcount":  982 ,
+        },"genre": "posts","keywords": "Breakdown","wordcount":  1048 ,
         "url": "https:\/\/dustin-biser.github.io\/posts\/analyzing-combat-frames-ffmpeg\/","datePublished": "2022-01-10T22:25:52-08:00","dateModified": "2022-01-10T22:25:52-08:00","publisher": {
             "@type": "Organization",
             "name": "Dustin"},"author": {
@@ -81,7 +81,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Analyzing Combat Frames with FFmpeg</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Dustin</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-10">2022-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;982 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-10">2022-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1048 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -98,6 +98,7 @@
         <li><a href="#trimming-video">Trimming Video</a></li>
         <li><a href="#preview-settings-before-export">Preview Settings Before Export</a></li>
         <li><a href="#exporting-frames">Exporting Frames</a></li>
+        <li><a href="#scrubbing-through-exported-frames">Scrubbing Through Exported Frames</a></li>
       </ul>
     </li>
   </ul>
@@ -170,9 +171,8 @@
 <p>Create a <code>PreviewFrames.bat</code> file and copy paste the following code into it.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">:</span><span class="c1">: For each *.mp4 file in the current directory, preview it with the following settings:</span>
 <span class="p">:</span><span class="c1">: scale=-1:1080, resize to 1080 pixels vertically, while maintaining aspect ratio of video.</span>
-<span class="p">:</span><span class="c1">: crop=width:height:x_offset:y_offset, x-y offsets are relative to top-left corner of video.</span>
-<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffplay -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -vf <span class="s2">&#34;scale=-1:1080, crop=1024:720:0:0&#34;</span>
-
+<span class="p">:</span><span class="c1">: crop=width:height, from center of video</span>
+<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffplay -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -vf <span class="s2">&#34;scale=-1:1080, crop=1024:720&#34;</span>
 <span class="k">pause</span>
 </code></pre></div><p> </p>
 <p>Then place the <code>PreviewFrames.bat</code> file into our <code>CustomFolder</code> like so:</p>
@@ -184,7 +184,7 @@
     - GameplayVideo trimmed.mp4
 </code></pre><p> </p>
 <p>Now you can double click and run <code>PreviewFrames.bat</code> which will preview your <code>GameplayVideo trimmed.mp4</code> in real-time with the scale and cropped size options specified. Pressing <code>SpaceBar</code> allows you to pause and resume the preview video as needed.</p>
-<p>Try out different settings for the <code>-vf &quot;scale=-1:1080, crop=1024:720:0:0&quot;</code> options to see what works best for your video.</p>
+<p>Try out different settings for the <code>-vf &quot;scale=-1:1080, crop=1024:720&quot;</code> options to see what works best for your video.</p>
 <ul>
 <li>
 <p><code>-vf &quot;crop=700:500:20:30&quot;</code> - Keep the same video scale resolution, but crop the video with an offset starting from x=20, y=30 pixels from the top-left corner with width=700 pixels and height=500 pixels.</p>
@@ -203,13 +203,24 @@
     - ffmpeg.exe
     - ffplay.exe
     - GameplayVideo trimmed.mp4
-</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">@</span><span class="c1">REM For each *.mp4 file in the current directory make a folder with the same name as the .mp4 file name</span>
-<span class="p">@</span><span class="c1">REM and then output individual files of the .mp4 into the newly created directory with the same name.</span>
-<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> <span class="k">mkdir</span> <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">~nA&#34;</span> 
-<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffmpeg -ss 00:00:00 -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -vf <span class="s2">&#34;crop=2560:1920&#34;</span> <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">~nA\image</span><span class="se">%%</span><span class="s2">04d.png&#34;</span> 
-
+</code></pre><p>Then copy the following text into our <code>ExportFrames.bat</code> file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="p">:</span><span class="c1">: For each *.mp4 file in the current directory make a new folder with the same name</span>
+<span class="p">:</span><span class="c1">: and export the individual frames of the .mp4 into the new folder.</span>
+<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> <span class="k">mkdir</span> <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">~nA Frames&#34;</span> 
+<span class="k">for</span> <span class="se">%%</span>A <span class="k">IN</span> <span class="p">(</span>*.mp4<span class="p">)</span> <span class="k">DO</span> ffmpeg  -i <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">A&#34;</span> -vf <span class="s2">&#34;scale=-1:1080, crop=1024:720&#34;</span> <span class="se">^
+</span><span class="se">&#34;%%</span>~nA Frames\image<span class="se">%%</span>04d.png<span class="s2">&#34; </span>
 <span class="k">pause</span>
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div><p>Make sure to copy the same scale and crop arguments used previously in <code>PreviewFrames.bat</code> to our new script above.  Then we can double click to run <code>ExportFrames.bat</code> and a new folder will be created called <code>\GameplayVideo trimmed Frames</code> containing all the exported frames from the .mp4 video.</p>
+<pre tabindex="0"><code>\CustomFolder
+    \GameplayVideo trimmed Frames &lt;--
+    - ExportFrames.bat
+    - PreviewFrames.bat
+    - TrimVideo.bat
+    - ffmpeg.exe
+    - ffplay.exe
+    - GameplayVideo trimmed.mp4
+</code></pre><h3 id="scrubbing-through-exported-frames">Scrubbing Through Exported Frames</h3>
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -238,9 +249,7 @@
 
     <div class="post-nav"></div>
 </div>
-<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
-                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
-            </noscript></div></article></div>
+</article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span>&nbsp;|&nbsp;<span class="license"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />Content licensed under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</span></div>
@@ -252,5 +261,5 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/mermaid/mermaid.min.css"><script type="text/javascript" src="https://dustinbiser.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/mermaid/mermaid.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"graph LR;\n    A(Record Gameplay Video) --\u003e B(Trim Video to Specific Section)\n    B --\u003e C(Preview Scale/Crop Settings)\n    C --\u003eE(Export Frames)"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/mermaid/mermaid.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/mermaid/mermaid.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"data":{"id-1":"graph LR;\n    A(Record Gameplay Video) --\u003e B(Trim Video to Specific Section)\n    B --\u003e C(Preview Scale/Crop Settings)\n    C --\u003eE(Export Frames)"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
