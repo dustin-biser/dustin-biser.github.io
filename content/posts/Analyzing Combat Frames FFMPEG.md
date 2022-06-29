@@ -1,19 +1,12 @@
 ---
 title: "Analyzing Combat Frames with FFmpeg"
-date: 2022-01-10T22:25:52-08:00
+date: 2022-02-01
 draft: false
-tags: ['Breakdown']
+tags: ['Tools', 'Analysis']
 # featuredImage: "/images/CrowReaper.png"
 featuredImagePreview: "/images/CrowReaper.png"
+summary: "Example of using FFmpeg to answer questions about combat"
 ---
-
-<!-- # Header 1
-## Lesser Header 1
-My first post
-
-# Header 2
-## Lesser Header 2
-My first post -->
 
 ### Answering Key Questions
 
@@ -40,12 +33,14 @@ In order to answer these questions, I like to use FFmpeg to export individual fr
 
 We'll be using the following workflow that allows for quick adjustment and iteration of exporting video frames so we can export only the frames we care about with the option to crop and scale the frames as needed.
 
+
 {{< mermaid >}}
 graph LR;
     A(Record Gameplay Video) --> B(Trim Video to Specific Section)
     B --> C(Preview Scale/Crop Settings)
     C -->E(Export Frames)
 {{< /mermaid >}}
+
 
 
 ### Recommended Tools and Setup

@@ -17,10 +17,12 @@ theme = "LoveIt"
 [params]
   # LoveIt theme version
   version = "0.2.X"
+  #site title
+  title = ""
   # site description
-  # description = "This is My New Hugo Site"
+  description = ""
   # site keywords
-  keywords = ["Combat", "Design", "CombatDesign", "Game", "GameDesign", "Unreal", "Analysis", "Blog"]
+  keywords = ["Combat", "Design", "CombatDesign", "SystemsDesign", "Game", "GameDesign", "Unreal", "Analysis", "Blog"]
   # site default theme ("light", "dark", "auto")
   defaultTheme = "dark"
   # public git repo url only then enableGitInfo is true
@@ -137,7 +139,9 @@ theme = "LoveIt"
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       # title = "Home Title"
       # subtitle shown in home page
-      # subtitle = "Subtitle for landing page"
+      # subtitle = "An in-depth look at crafting compelling combat for games."
+      subtitle = "Welcome to the dojo! Leave your shoes at the door and bow in for class. Here we study the forbidden art and craft of designing compelling combat for games."
+      # subtitle = "Welcome to Combat Design Dojo! A place for diving into the art and craft of creating compelling combat for games."
       # whether to use typeit animation for subtitle
       typeit = false 
       # whether to show social links

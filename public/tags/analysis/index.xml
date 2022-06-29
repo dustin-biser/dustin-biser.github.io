@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Analysis - Tag - Combat Design Dojo</title>
+        <link>https://dustin-biser.github.io/tags/analysis/</link>
+        <description>Analysis - Tag - Combat Design Dojo</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dustinbiser@gmail.com (Dustin)</managingEditor>
+            <webMaster>dustinbiser@gmail.com (Dustin)</webMaster><lastBuildDate>Tue, 01 Feb 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://dustin-biser.github.io/tags/analysis/" rel="self" type="application/rss+xml" /><item>
+    <title>Analyzing Combat Frames with FFmpeg</title>
+    <link>https://dustin-biser.github.io/posts/analyzing-combat-frames-ffmpeg/</link>
+    <pubDate>Tue, 01 Feb 2022 00:00:00 &#43;0000</pubDate>
+    <author>Dustin</author>
+    <guid>https://dustin-biser.github.io/posts/analyzing-combat-frames-ffmpeg/</guid>
+    <description><![CDATA[Example of using FFmpeg to answer questions about combat]]></description>
+</item>
+</channel>
+</rss>
