@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Systems Design - Tag - Combat Design Dojo</title>
+        <link>https://dustin-biser.github.io/tags/systems-design/</link>
+        <description>Systems Design - Tag - Combat Design Dojo</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dustinbiser@gmail.com (Dustin)</managingEditor>
+            <webMaster>dustinbiser@gmail.com (Dustin)</webMaster><lastBuildDate>Thu, 23 Jun 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://dustin-biser.github.io/tags/systems-design/" rel="self" type="application/rss+xml" /><item>
+    <title>Goal Alignment - Reducing Toxicity in Team-Based Competitive Games</title>
+    <link>https://dustin-biser.github.io/posts/goal-alignment/</link>
+    <pubDate>Thu, 23 Jun 2022 00:00:00 &#43;0000</pubDate>
+    <author>Dustin</author>
+    <guid>https://dustin-biser.github.io/posts/goal-alignment/</guid>
+    <description><![CDATA[Can we reduce Toxicity in Competitive Games by focusing on shared Goals rather than related Skill?]]></description>
+</item>
+</channel>
+</rss>
